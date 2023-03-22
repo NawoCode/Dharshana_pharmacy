@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Customer Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="customer.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+    <link href="resources/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="resources/select2/js/select2.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown" >
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>  </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav" style="margin: -10px -10px -10px -10px; background-color: #411464;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center CORDER"
+                                         onclick="window.location.assign('http://localhost:8080/corder')">
+                                        <div id="cordercart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Order</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center INVOICE"
+                                         onclick="window.location.assign('http://localhost:8080/invoice')">
+                                        <div id="invoicecart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Invoice</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center CPAYMENT"
+                                         onclick="window.location.assign('http://localhost:8080/cpayment')">
+                                        <div id="cpaymentcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center DISTRIBUTION"
+                                         onclick="window.location.assign('http://localhost:8080/distribution')">
+                                        <div id="distributioncart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Distribution</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header bg-primary text-center cardhead">
+                            <h3 style="font-size: 38px">Customer Management</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul class="nav nav-pills mb-2">
+                                <li class="nav-item" id="listTable" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 180px;"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>Veiw Customers</a>
+                                </li>
+                                <li class="nav-item" id="listForm" onclick="changeTab('form')">
+                                    <a class="nav-link" id="tbForm" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 160px;"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Add Customer</a>
+                                </li>
+                            </ul>
+                            <!-- Form -->
+                            <div class="row p-3 form"  id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="customerform" onsubmit="return false">
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;"><b>*</b>required</span>
+                                            </div>
+                                        </div>
+                                        <!-- Cus No/CallingName/NIC/Gender/DOB -->
+                                        <div class="row">
+                                            <!-- Customer Reg No -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtRegNo"><b>Customer Reg No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtRegNo" class="form-control" placeholder="Entre Reg No"
+                                                           data-toggle="tooltip" data-placement="bottom" title="1900000">
+                                                </div>
+                                            </div>
+                                            <!-- CallingName -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtCallingName"><b>Customer Calling Name: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtCallingName" class="form-control"
+                                                           placeholder="Ex:Anna" required data-toggle="tooltip" data-placement="bottom"
+                                                           title="Ex:Anna"
+                                                           onkeyup="textFieldBinder(txtCallingName,'^([A-Z][a-z]+)$','customer','callingname','oldcustomer')">
+                                                </div>
+                                            </div>
+                                            <!-- NIC -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtNIC"><b>Customer NIC: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtNIC" class="form-control" placeholder="9 digite plus vVxX or 12 digits" required
+                                                           data-toggle="tooltip" data-placement="bottom" title="9 digite plus vVxX or 12 digits"
+                                                           onkeyup="nicTestFieldBinder(txtNIC,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','customer','nic','oldcustomer')">
+                                                </div>
+                                            </div>
+                                            <!-- Gender -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cmbGender"><b>Customer Gender: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbGender" class="form-control" disabled required
+                                                            onchange="comboBoxBinder(cmbGender,'','customer','gender_id','oldcustomer')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- DOB -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="dteDob"><b>Customer DOB: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteDob" class="form-control" disabled required
+                                                           onkeyup="textFieldBinder(dteDob,'','customer','dob','oldcustomer')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- FullName/Address/Description -->
+                                        <div class="row">
+                                            <!-- FullName -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtFullName"><b>Customer Full Name: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <textarea type="text" id="txtFullName" class="form-control"
+                                                              placeholder="Add Full Name here" required rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Full Name"
+                                                              onkeyup="textFieldBinder(txtFullName,'^([a-zA-Z]+|[a-zA-Z]+\\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\\s{1}[a-zA-Z]{3,}\\s{1}[a-zA-Z]{1,})$','customer','fullname','oldcustomer')"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- Address -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtCusAddress"><b>Customer Address: <span style="color: red;">*</span></b></label>
+                                                    <textarea type="text" id="txtCusAddress" class="form-control"
+                                                              placeholder="Add Address here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Address" required
+                                                              onkeyup="textFieldBinder(txtCusAddress,'^([\\w\\/\\-,\\s]{2,})$','customer','address','oldcustomer')"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- Description -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtCusDescription"><b>Customer Descripton:</b>
+                                                        <span style="color: red;">(Optional)</span></label>
+                                                    <textarea type="text" id="txtCusDescription" class="form-control"
+                                                              placeholder="Add Description here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Description"
+                                                              onkeyup="textFieldBinder(txtCusDescription,'^.*$','customer','description','oldcustomer')"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Mobile No/Second contactNo/email/customer type -->
+                                        <div class="row">
+                                            <!-- Mobile No -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtMobile"><b>Customer Mobile No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <div class="input-group">
+                                                        <input type="text" id="txtMobile" class="form-control"
+                                                               placeholder="Ex:760000000" required data-toggle="tooltip" data-placement="bottom"
+                                                               title="Ex:760000000"
+                                                               onkeyup="textFieldBinder(txtMobile,'^0\\d{9}$','customer','mobileno','oldcustomer')">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Second contactNo -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtLAnd"><b>Customer Land No: </b><span style="color: red;">(Optional)</span></label>
+                                                    <div class="input-group">
+                                                        <input type="text" id="txtLAnd" class="form-control"
+                                                               placeholder="Ex:3000000" data-toggle="tooltip" data-placement="bottom"
+                                                               title="Ex:3000000"
+                                                               onkeyup="textFieldBinder(txtLAnd,'^0\\d{9}$','customer','secondcontactno','oldcustomer')">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- email -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtEmail"><b>Customer E-mail: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtEmail" class="form-control"
+                                                           placeholder="Ex:customer@gmail.com" required data-toggle="tooltip"
+                                                           data-placement="bottom" title="Ex:customer@gmail.com"
+                                                           onkeyup="textFieldBinder(txtEmail,'^.*$','customer','email','oldcustomer')">
+                                                </div>
+                                            </div>
+                                            <!-- customer type -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbCusType"><b>Customer Type: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbCusType" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbCusType,'','customer','customertype_id','oldcustomer')"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- added date/status/point -->
+                                        <div class="row">
+                                            <!-- added date -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dteAsignDate"><b>Asign Date: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteAsignDate" class="form-control"
+                                                           onchange="comboBoxBinder(dteAsignDate,'','customer','addeddate','oldcustomer')">
+                                                </div>
+                                            </div>
+                                            <!-- status -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbStatus"><b>Customer Status: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbStatus" class="form-control"
+                                                            onchange="comboBoxBinder(cmbStatus,'','customer','customerstatus_id','oldcustomer')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- Asign By -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbAssignBy"><b>Asign By: <span style="color: red;">*</span></b></label>
+                                                    <select id="cmbAssignBy" required class="form-control"
+                                                            onchange="comboBoxBinder(cmbAssignBy,'','customer','employee_id','oldcustomer')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- buttons -->
+                                        <div class="text-right">
+                                            <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                                    style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                            <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Regno', search: true, datatype: 'text', property: 'regno'},
+                                            {name: 'Calling Name', search: true, datatype: 'text', property: 'callingname'},
+                                            {name: 'NIC', search: true, datatype: 'text', property: 'nic'},
+                                            {name: 'Mobile', search: true, datatype: 'text', property: 'mobileno'},
+                                            {
+                                                name: 'Customer type',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'customertype_id.name'
+                                            },
+                                            {
+                                                name: 'Customer status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'customerstatus_id.name'
+                                            },
+                                        ];
+                                        //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                        table("tableParent", "tblCustomer", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal veiw item -->
+<div class="modal fade bd-example-modal-lg" id="dataVeiwModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 40px">Veiw Customer Details</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <table id="printformtable" class="mt-5 table table-borderless table-striped">
+                    <tbody>
+                    <tr>
+                        <th>Customer regno</th>
+                        <td>:</td>
+                        <td id="tdcregno" ></td>
+
+                        <th>Callingname</th>
+                        <td>:</td>
+                        <td id="tdccnme"></td>
+
+                        <th>Fullname</th>
+                        <td>:</td>
+                        <td id="tdcfname"></td>
+                    </tr>
+                    <tr>
+                        <th>NIC</th>
+                        <td>:</td>
+                        <td id="tdnic"></td>
+
+                        <th>Gender</th>
+                        <td>:</td>
+                        <td id="tdgender"></td>
+
+                        <th>Date of Birth</th>
+                        <td>:</td>
+                        <td id="tddob"></td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>:</td>
+                        <td id="tdaddress"></td>
+
+                        <th>Mobilno</th>
+                        <td>:</td>
+                        <td id="tdmobilno"></td>
+
+                        <th>Email</th>
+                        <td>:</td>
+                        <td id="tdemail"></td>
+                    </tr>
+                    <tr>
+                        <th>Landno</th>
+                        <td>:</td>
+                        <td id="tdlandno"></td>
+
+                        <th>Customer Type</th>
+                        <td>:</td>
+                        <td id="tdctype"></td>
+                    </tr>
+                    <tr>
+                        <th>Assign By</th>
+                        <td>:</td>
+                        <td id="tdasign"></td>
+
+                        <th>Added Date</th>
+                        <td>:</td>
+                        <td id="tdaddate"></td>
+
+                        <th>Customer Status</th>
+                        <td>:</td>
+                        <td id="tdistatus"></td>
+                    </tr>
+                    <tr>
+                        <th>Customer Description</th>
+                        <td>:</td>
+                        <td id="tddesc"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer"  style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte   " data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn   " onclick="btnPrintRowMC()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

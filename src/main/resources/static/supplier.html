@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Supplier Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .modal-dialog{
+            max-width: 1100px;
+        }
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="supplier.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown" >
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>  </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav" style="margin: -10px -10px -10px -10px; background-color: #411464;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center QUOTATIONREQUEST"
+                                         onclick="window.location.assign('http://localhost:8080/quotationrequest')">
+                                        <div id="quotationrequestcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Quotaion Request</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center QUOTATION"
+                                         onclick="window.location.assign('http://localhost:8080/quotation')">
+                                        <div id="quotationcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Quotation</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center PORDER"
+                                         onclick="window.location.assign('http://localhost:8080/porder')">
+                                        <div id="purchaseordercart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Order</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center SUPPLIERRETURN"
+                                         onclick="window.location.assign('http://localhost:8080/supplierreturn')">
+                                        <div id="supplierreturncart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Return</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center GRN"
+                                         onclick="window.location.assign('http://localhost:8080/grn')">
+                                        <div id="grncart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">GRN</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center SPAYMENT"
+                                         onclick="window.location.assign('http://localhost:8080/spayment')">
+                                        <div id="supplierpaymentcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header text-center cardhead">
+                            <h3>Supplier Management</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul class="nav nav-pills mb-2">
+                                <li class="nav-item" id="listTable" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 160px;"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>Veiw Suppliers</a>
+                                </li>
+                                <li class="nav-item" id="listForm" onclick="changeTab('form')">
+                                    <a class="nav-link" id="tbForm" href="#"
+                                       style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 160px;"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Add Supplier</a>
+                                </li>
+                            </ul>
+
+                            <div class="row p-3 form" id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="itemform" onsubmit="return false">
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;"><b>*</b>required</span>
+                                            </div>
+                                        </div>
+                                        <!-- Supplier Reg No/Full Name -->
+                                        <div class="row">
+                                            <!-- Supplier Reg No -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="txtSupRegNo"><b>Supplier Reg No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtSupRegNo" class="form-control" required
+                                                           placeholder="Entre Reg No" data-toggle="tooltip" data-placement="bottom"
+                                                           title="Start with letter 's' and enter 9 digits."
+                                                           onkeyup="textFieldBinder(txtSupRegNo,'^[S][0-9]{9}$','supplier','regno','oldsupplier')" >
+                                                </div>
+                                            </div>
+                                            <!-- Full Name -->
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="txtSupFullName"><b>Supplier Full Name: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <textarea type="text" id="txtSupFullName" class="form-control" required
+                                                              placeholder="Add Full Name here" rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Enter Supplier full name"
+                                                              onkeyup="fullnameBinder()"></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- email/Land No/Contact Person Name/Contact Person Mobile No -->
+                                        <div class="row mt-3">
+                                            <!-- email -->
+                                            <div class="col md-3">
+                                                <div class="form-group">
+                                                    <label for="txtSupEmail"><b>Supplier E-mail: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtSupEmail" class="form-control" required
+                                                           placeholder="Ex:supplier@gmail.com" data-toggle="tooltip"
+                                                           data-placement="bottom" title="Enter active email address.
+                                                                                           Ex:supplier@gmail.com"
+                                                           onkeyup="emailBinder()">
+                                                </div>
+                                            </div>
+                                            <!-- Land No -->
+                                            <div class="col md-3">
+                                                <div class="form-group">
+                                                    <label for="txtSupMobile"><b>Land No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtSupMobile" class="form-control" required
+                                                           placeholder="Ex:011000000" data-toggle="tooltip" data-placement="bottom"
+                                                           title="Enter Land line number. Mobile numbers are not allowed..Ex:011000000"
+                                                           onkeyup="landNoBinder()">
+                                                </div>
+                                            </div>
+                                            <!-- Contact Person Name -->
+                                            <div class="col md-3">
+                                                <div class="form-group">
+                                                    <label for="txtCPName"><b>Contact Person Name: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtCPName" class="form-control" required
+                                                           placeholder="Ex:Anna" data-toggle="tooltip" data-placement="bottom"
+                                                           title="Enter name start with capital letter and must be more than three letters."
+                                                           onkeyup="textFieldBinder(txtCPName,'^[A-Z][a-z]+$','supplier','cpname','oldsupplier')">
+                                                </div>
+                                            </div>
+                                            <!-- Contact Person Mobile No -->
+                                            <div class="col md-3">
+                                                <div class="form-group">
+                                                    <label for="txtCPMobile"><b>Contact Person Mobile No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtCPMobile" class="form-control" required
+                                                           placeholder="Ex:0760000000" data-toggle="tooltip" data-placement="bottom"
+                                                           title="Enter valid mobile number..Start with 07.. Land numbers are not allowed..Ex:0760000000"
+                                                           onkeyup="textFieldBinder(txtCPMobile,'^[0][7][0-9]{8}$','supplier','cpcontactno','oldsupplier')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Address and description -->
+                                        <div class="row">
+                                            <!-- Address -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtSupAddress"><b>Supplier Address: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <textarea type="text" id="txtSupAddress" class="form-control" required
+                                                              placeholder="Add Address here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Add valid address form..."
+                                                              onkeyup="textFieldBinder(txtSupAddress,'^.*$','supplier','address','oldsupplier')"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- Description -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtSupDescription"><b>Supplier Descripton:</b>
+                                                        <span style="color: red;">(Optional)</span></label>
+                                                    <textarea type="text" id="txtSupDescription" class="form-control"
+                                                              placeholder="Add Description here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Add description regarding supplier status..."
+                                                              onkeyup="textFieldBinder(txtSupDescription,'^.*$','supplier','description','oldsupplier')"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Supplier Type/Inner form/Credit Limit/Inner Bank Details -->
+                                        <div class="row mb-3" >
+                                            <!-- Supplier Type & Inner form-->
+                                            <div class="col-md-6">
+                                                <!-- Supplier Type -->
+                                                <div class="row" >
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="cmbSupType"><b>Supplier Type: <span
+                                                                    style="color: red;">*</span></b></label>
+                                                            <select type="text" id="cmbSupType" class="form-control" required
+                                                                    data-toggle="tooltip" data-placement="bottom"
+                                                                    title="Select supplier type.."
+                                                                    onchange="comboBoxBinder(cmbSupType,'','supplier','supplytype_id','oldsupplier')"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Inner form -->
+                                                <div class="row" >
+                                                    <div class="col-md-12">
+                                                        <!-- Inner drug form -->
+                                                        <div class="card innercard" id="innerDrug" style="display:none">
+                                                            <div class="card-header text-center innerhead" id="hdDrug">
+                                                                <h3>Drug</h3>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="accordion">
+                                                                    <!-- Drug form -->
+                                                                    <div class="card" id="formDrug">
+                                                                        <div class="card-header innerlebel" id="headingOne">
+                                                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne"
+                                                                                        aria-expanded="true" aria-controls="collapseOne">Add Drug Items</h5>
+                                                                        </div>
+
+                                                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                                             data-parent="#accordion">
+                                                                            <div class="card-body innerform">
+                                                                                <!-- Inner Drug Form Area -->
+                                                                                <div class="row mt-2">
+                                                                                    <div class="col md-12">
+                                                                                        <!-- Item -->
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="cmbDrugItem" class="col-sm-2 col-form-label"><b>Item :</b></label>
+                                                                                            <div class="col-sm-9">
+                                                                                                <select id="cmbDrugItem" class="form-control" required
+                                                                                                        onchange="comboBoxBinder(cmbDrugItem,'','supplierHasItem','subitem_id','oldsupplierHasItem')">
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <!-- Inner button -->
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-12">
+                                                                                                <div class="text-right mt-2">
+                                                                                                    <button class="btn btn-info " type="button" id="btnInnerDrugClear" style="width: 25%" onclick="btnInnerClearMc()">
+                                                                                                        <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                                    </button>
+                                                                                                    <button class="btn btn-success" style="width: 25%" type="button" id="btnInnerDrugAdd" onclick="btnInnerAddDrugMc()">
+                                                                                                        <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card" id="divInnerDrugTable">
+                                                                    <div class="card-header innerlebel" id="headingTwo">
+                                                                        <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo"
+                                                                                    aria-expanded="false" aria-controls="collapseTwo">view Table</h5>
+                                                                    </div>
+                                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                                        <div class="card-body innertable">
+                                                                            <!-- Table Area -->
+                                                                            <div class="row mt-2" id="innerTableDrug">
+                                                                                <script>
+
+                                                                                    var metadatainner = [
+                                                                                        //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                                                        {name: 'Item Name', search: true, datatype: 'text', property: 'subitem_id.subitemname'},
+                                                                                    ];
+                                                                                    tableForInnerForm("innerTableDrug","tblInnerDrug",metadatainner,true)
+                                                                                </script>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- Inner grocery form -->
+                                                        <div class="card innercard" id="innerGrocery" style="display:none">
+                                                            <div class="card-header text-center innerhead" id="hdGrocery" >
+                                                                <h3>Grocery</h3>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div id="accordion2">
+                                                                    <!-- grocery form -->
+                                                                    <div class="card" id="formGrocery">
+                                                                        <div class="card-header innerlebel" id="headingThree">
+                                                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree"
+                                                                                        aria-expanded="true" aria-controls="collapseThree">Add Grocery Items</h5>
+                                                                        </div>
+
+                                                                        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                                                                             data-parent="#accordion2">
+                                                                            <div class="card-body innerform">
+                                                                                <!--Inner grocery Form Area -->
+                                                                                <div class="row mt-2">
+                                                                                    <div class="col md-12">
+                                                                                        <!-- Item -->
+                                                                                        <div class="row mb-3">
+                                                                                            <label for="cmbGroceryItem" class="col-sm-2 col-form-label"><b>Item :</b></label>
+                                                                                            <div class="col-sm-9">
+                                                                                                <select id="cmbGroceryItem" class="form-control" required
+                                                                                                        onchange="comboBoxBinder(cmbGroceryItem,'','supplierHasItem','item_id','oldsupplierHasItem')">
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <!-- Inner button -->
+                                                                                        <div class="row mt-2">
+                                                                                            <div class="col-md-12">
+                                                                                                <div class="text-right">
+                                                                                                    <button class="btn btn-info " type="button" id="btnInnerGroceryClear" style="width: 25%" onclick="btnInnerClearMc()">
+                                                                                                        <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                                    </button>
+                                                                                                    <button class="btn btn-success" type="button" id="btnInnerGroceryAdd" style="width: 25%" onclick="btnInnerGroceryAddMc()">
+                                                                                                        <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card" id="divInnerTable">
+                                                                    <div class="card-header innerlebel" id="headingFour">
+                                                                        <h5 class="mb-0" data-toggle="collapse" data-target="#collapseFour"
+                                                                                    aria-expanded="false" aria-controls="collapseFour">view Table</h5>
+                                                                    </div>
+                                                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion2">
+                                                                        <div class="card-body innertable">
+                                                                            <!-- Table Area -->
+                                                                            <div class="row mt-2" id="innerTableGrocery">
+                                                                                <script>
+
+                                                                                    var metadatainner = [
+                                                                                        //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                                                        {name: 'Item Name', search: true, datatype: 'text', property: 'item_id.itemname'},
+                                                                                    ];
+                                                                                    tableForInnerForm("innerTableGrocery","tblInnerGrocery",metadatainner,true)
+                                                                                </script>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Credit Limit/Inner Bank Details -->
+                                            <div class="col-md-6">
+                                                <!-- Credit Limit -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="txtCreditLmt"><b>Credit Limit(Rs.): <span
+                                                                    style="color: red;">(Optional)</span></b></label>
+                                                            <input type="text" id="txtCreditLmt"
+                                                                   class="form-control" placeholder="0.00"
+                                                                   data-toggle="tooltip" data-placement="bottom"
+                                                                   title="Add credit limit with cents.."
+                                                                   onkeyup="textFieldBinder(txtCreditLmt,'^[0-9]{1,6}[.][0-9]{2}$','supplier','creditlimit','oldsupplier')">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Inner Bank Details -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                            <div id="accordion3">
+                                                                <div class="card">
+                                                                    <div class="card-header innerlebel" id="headingFive">
+                                                                        <h5 class="mb-0" data-toggle="collapse" data-target="#collapseFive"
+                                                                                    aria-expanded="false" aria-controls="collapseFive">Bank Details (Optional)</h5>
+                                                                    </div>
+
+                                                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                                                         data-parent="#accordion3">
+                                                                        <div class="card-body innerform">
+                                                                            <!-- Form Area -->
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <!-- Bank Holder Name -->
+                                                                                    <div class="row">
+                                                                                        <div class="col md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label for="txtBankHolderName"><b>Account Holder Name:
+                                                                                                    <span style="color: red;">(Optional)</span></b></label>
+                                                                                                <input type="text" id="txtBankHolderName"
+                                                                                                       class="form-control" placeholder="Ex:Anna"
+                                                                                                       data-toggle="tooltip" data-placement="bottom"
+                                                                                                       title="Add name of Account Holder. Start with capital letter..."
+                                                                                                       onkeyup="textFieldBinder(txtBankHolderName,'^[A-Z][a-z]+$','supplier','bankholdername','oldsupplier')">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- Bank Name -->
+                                                                                        <div class="col md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label for="txtBankName"><b>Bank Name: <span
+                                                                                                        style="color: red;">(Optional)</span></b></label>
+                                                                                                <input type="text" id="txtBankName" class="form-control"
+                                                                                                       placeholder="Ex:Peoples' Bank" data-toggle="tooltip"
+                                                                                                       data-placement="bottom" title="Enter Bank name..Ex:Peoples' Bank"
+                                                                                                       onkeyup="textFieldBinder(txtBankName,'^.*$','supplier','bankname','oldsupplier')">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- Bank Branch/Bank Account No -->
+                                                                                    <div class="row">
+                                                                                        <!-- Bank Branch -->
+                                                                                        <div class="col md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label for="txtBankName"><b>Bank Branch: <span
+                                                                                                        style="color: red;">(Optional)</span></b></label>
+                                                                                                <input type="text" id="txtBankBranch"
+                                                                                                       class="form-control" placeholder="Ex:Negombo"
+                                                                                                       data-toggle="tooltip" data-placement="bottom"
+                                                                                                       title="Ex:Negombo"
+                                                                                                       onkeyup="textFieldBinder(txtBankBranch,'^[A-Z][a-z]+$','supplier','bankbranchname','oldsupplier')">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- Bank Account No -->
+                                                                                        <div class="col md-6">
+                                                                                            <div class="form-group">
+                                                                                                <label for="txtBankAccNo"><b>Bank Account No: <span
+                                                                                                        style="color: red;">(Optional)</span></b></label>
+                                                                                                <input type="text" id="txtBankAccNo"
+                                                                                                       class="form-control"
+                                                                                                       placeholder="Entre Bank Account No"
+                                                                                                       data-toggle="tooltip" data-placement="bottom"
+                                                                                                       title="Account No"
+                                                                                                       onkeyup="textFieldBinder(txtBankAccNo,'^[0-9]{12}$','supplier','bankaccno','oldsupplier')">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Asign By/Adedd Date/Supplier Status -->
+                                        <div class="row">
+                                            <!-- Asign By -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="cmbAssignBy"><b>Asign By: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select id="cmbAssignBy" required class="form-control"
+                                                            onchange="comboBoxBinder(cmbAssignBy,'','supplier','employee_id','oldsupplier')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Adedd Date -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="dteAsignDate"><b>Asign Date: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteAsignDate" class="form-control" required
+                                                           onkeyup="textFieldBinder(dteAsignDate,'','supplier','asigndate','oldsupplier')">
+                                                </div>
+                                            </div>
+                                            <!-- Supplier Status -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="cmbSupStatus"><b>Supplier Status: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbSupStatus" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbSupStatus,'','supplier','supplirstatus_id','oldsupplier')"></select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- buttons -->
+                                        <div class="text-right">
+                                            <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                                    style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                            <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Veiw Area -->
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+                                    <!-- table print button -->
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <!-- table search -->
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+                                <!-- table -->
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Regno', search: true, datatype: 'text', property: 'regno'},
+                                            {name: 'Supplier Name', search: true, datatype: 'text', property: 'fullname'},
+                                            {name: 'Supplier Type',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'supplytype_id.name'},
+                                            {
+                                                name: 'Supplier Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'supplirstatus_id.name'
+                                            },
+                                        ];
+                                        //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                        table("tableParent", "tblSupplier", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+                                <!-- pagination-->
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal veiw item -->
+<div class="modal fade bd-example-modal-lg" id="dataVeiwModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 40px">View Supplier Details</h5>
+            </div>
+            <div class="modal-body modelcontent" style="border: 2px solid rgba(146, 56, 201, 0.9)">
+                <div id="printformtable">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table class="mt-1 table table-borderless">
+                                    <tbody>
+                                    <tr>
+                                        <th>Supplier regno</th>
+                                        <td >:</td>
+                                        <td id="tdsregno" ></td>
+
+                                        <th>Supplier Name</th>
+                                        <td >:</td>
+                                        <td id="tdsname"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address</th>
+                                        <td >:</td>
+                                        <td id="tdsaddres" ></td>
+
+                                        <th>Email</th>
+                                        <td >:</td>
+                                        <td id="tdemail"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Land No</th>
+                                        <td >:</td>
+                                        <td id="tdlandno" ></td>
+
+                                        <th>Supplier Contact Person Name</th>
+                                        <td >:</td>
+                                        <td id="tdcpname"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Person Mobile</th>
+                                        <td >:</td>
+                                        <td id="tdcpmno"></td>
+
+                                        <th>Supplier Type</th>
+                                        <td >:</td>
+                                        <td id="tdstype"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col-md-4" style="border-left:  2px solid rgba(106, 47, 129, 0.9)">
+                                <div class="row" style="background-color: rgba(162,101,185,0.9); margin-left: 5px; padding-left: 10px">
+                                    <h5>Supplier Bank Details</h5>
+                                </div>
+                                <table class="mt-2 table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <th>Credit Limit(Rs.)</th>
+                                            <td >:</td>
+                                            <td id="tdcredlimt"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Arrease Amount(Rs.)</th>
+                                            <td >:</td>
+                                            <td id="tdAresAmnt"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Holder Name</th>
+                                            <td >:</td>
+                                            <td id="tdbhname"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Name</th>
+                                            <td >:</td>
+                                            <td id="tdbname"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Branch</th>
+                                            <td >:</td>
+                                            <td id="tdbbranch"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bank Account Number</th>
+                                            <td >:</td>
+                                            <td id="tdaccno"></td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2" style="border-top:  2px solid rgba(106, 47, 129, 0.9); margin-left: 5px;margin-right: 5px">
+                            <table class="mt-3 table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th>Assign By</th>
+                                        <td >:</td>
+                                        <td id="tdasign"></td>
+
+                                        <th>Added Date</th>
+                                        <td >:</td>
+                                        <td id="tdaddate"></td>
+
+                                        <th>Supplier Status</th>
+                                        <td >:</td>
+                                        <td id="tdsstatus"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Supplier Description</th>
+                                        <td >:</td>
+                                        <td colspan="4" id="tddesc"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row mt-2" d="lblDrug" style="display: none">
+                            <div class="col-md-12" style="background-color: rgba(162,101,185,0.9); height: 40px">
+                                <h4 >Supplier Drug Details :</h4>
+                            </div>
+
+                        </div>
+                        <div class="row" id="tblDrug" style="display: none">
+                            <table class="mt-3 table table-borderless">
+                                <tbody>
+                                    <tr>
+                                    <td id="prinIinnerDrugTable">
+                                        <script>
+                                            //print innerr table
+                                            var metadatainner = [
+                                                //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                {
+                                                    name: 'Item Name',
+                                                    search: true,
+                                                    datatype: 'text',
+                                                    property: 'subitem_id.subitemname'
+                                                },
+                                            ];
+                                            tableForInnerForm("prinIinnerDrugTable", "tblPrintInnerDrugItem", metadatainner, false)
+
+                                        </script>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row mt-2" id="lblGrocery" style="display: none">
+                            <div class="col-md-12" style="background-color: rgba(162,101,185,0.9); height: 40px">
+                                <h4>Supplier Grocery Details :</h4>
+                            </div>
+                        </div>
+                        <div class="row" id="tblGrocery" style="display: none">
+                            <table class="mt-3 table table-borderless">
+                                <tbody>
+                                <tr >
+                                    <td id="prinIinnerGroceryTable">
+                                        <script>
+                                            //print innerr table
+                                            var metadatainner = [
+                                                //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                {
+                                                    name: 'Item Name',
+                                                    search: true,
+                                                    datatype: 'text',
+                                                    property: 'item_id.itemname'
+                                                },
+                                            ];
+                                            tableForInnerForm("prinIinnerGroceryTable", "tblPrintInnerGroceryItem", metadatainner, false)
+
+                                        </script>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

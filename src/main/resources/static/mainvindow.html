@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dharshana Pharmacy & Grocery : Dashboard </title>
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+    <link href='resources/calendar/main.css' rel='stylesheet' />
+    <script src='resources/calendar/main.js'></script>
+
+    <script type="text/javascript">
+
+        var someValue = window;
+        console.log(someValue)
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+
+            getrequest();
+
+           /* var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+            });
+            calendar.render();*/
+        });
+    </script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="SUBITEM">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="INVENTORY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="INVENTORY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQUEST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPPLIERRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+
+                </div>
+                <div class="">
+                    <h2 class="text-white font-weight-bold">    Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+
+        <!-- Content -->
+        <div class="container-fluid dashbordbody">
+
+            <div class="row">
+                <div class="col-md-7" style="background-color: rgba(196,192,192,0.4);">
+                    <div class="row mt-3">
+                        <div class="col-md-4 text-white EMPLOYEE" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/employee')">
+                            <div id="employeecart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h5>
+                                Emplyee</h5></div>
+                        </div>
+                        <div class="col-md-4 text-center USER" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/user')">
+                            <div id="usercart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h5>
+                                User </h5></div>
+                        </div>
+                        <div class="col-md-4 text-center PRIVILAGE" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/privilage')">
+                            <div id="privilagecart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Privilage</h6 ></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <!--item-->
+                        <div class="col-md-2 text-white ITEM" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/item')">
+                            <div id="itemcart" style="width:200px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h6>
+                                Item</h6></div>
+                        </div>
+                        <!--subitem-->
+                        <div class="col-md-2 text-center SUBITEM" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/subitem')">
+                            <div id="subitemcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                SubItem</h6></div>
+                        </div>
+                        <!--batch-->
+                        <div class="col-md-2 text-center BATCH" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/batch')">
+                            <div id="batchcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Batch</h6></div>
+                        </div>
+                        <!--groceryinventory-->
+                        <div class="col-md-2 text-center INVENTORY" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/inventorygrocery')">
+                            <div id="groceryinventrycart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Grocery Inventory</h6></div>
+                        </div>
+                        <!--druginventory-->
+                        <div class="col-md-2 text-center INVENTORY" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/inventorydrug')">
+                            <div id="druginventrycart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Drug Inventory</h6></div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3">
+                        <!--supplier-->
+                        <div class="col-md-4 text-white SUPPLIER" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/supplier')">
+                            <div id="suppliercart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h6>Supplier</h6></div>
+                        </div>
+                        <!--Quotationrequest-->
+                        <div class="col-md-4 text-center QUOTATIONREQUEST" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/quotationrequest')">
+                            <div id="quotationrequestcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Quotation Request </h6></div>
+                        </div>
+                        <!--Quotation-->
+                        <div class="col-md-4 text-center QUOTATION" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/quotation')">
+                            <div id="quotationcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Quotation </h6></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <!--purchaseorder-->
+                        <div class="col-md-3 text-white PORDER" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/porder')">
+                            <div id="purchaseordercart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h6>
+                                Purchase Order</h6></div>
+                        </div>
+                        <!--grn-->
+                        <div class="col-md-3 text-center GRN" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/grn')">
+                            <div id="grncart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                GRN </h6></div>
+                        </div>
+                        <!--suppllierreturn-->
+                        <div class="col-md-3 text-center SUPPLIERRETURN" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/supplierreturn')">
+                            <div id="supplierreturncart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Supplier Return </h6></div>
+                        </div>
+                        <!--spayment-->
+                        <div class="col-md-3 text-center SPAYMENT" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/spayment')">
+                            <div id="supplierpaymentcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Supplier Payment </h6></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <!--customer-->
+                        <div class="col-md-3 text-white  CUSTOMER" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/customer')">
+                            <div id="custoercart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h6>
+                                Customer</h6></div>
+                        </div>
+                        <!--corder-->
+                        <div class="col-md-3 text-center CORDER" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/corder')">
+                            <div id="cordercart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Customer Order </h6></div>
+                        </div>
+                        <!--invoice-->
+                        <div class="col-md-3 text-center INVOICE" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/invoice')">
+                            <div id="invoicecart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Invoice </h6></div>
+                        </div>
+                        <!--cpayment-->
+                        <div class="col-md-3 text-center CPAYMENT" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/cpayment')">
+                            <div id="cpaymentcart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Customer Payment </h6></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <!--Vehicle-->
+                        <div class="col-md-3 text-white VEHICLE" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/vehicle')">
+                            <div id="vehiclecart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white text-center p-0"
+                                 style="width:150px;height:30px"><h6>Vehicle</h6></div>
+
+                        </div>
+                        <!--distribution-->
+                        <div class="col-md-3 text-center DISTRIBUTION" style="max-width: 15rem;"
+                             onclick="window.location.assign('http://localhost:8080/distribution')">
+                            <div id="distributioncart" style="width:150px; height:90px"></div>
+                            <div class="card card-footer bg-primary text-white p-0" style="width:150px;height:30px"><h6>
+                                Distribution </h6></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 ml-5">
+                    <div class="row pb-2" style="background-color: rgba(191,188,188,0.3); margin-bottom: 5px" >
+                        <div class="container-fluid innerhead">
+                            <h3 class="text-center font-weight-bold">Notification</h3>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="container-fluid" id="divnotification">
+                            <!--<div id="accordion">
+                                <div class="card" id="divInnerDrugTable">
+                                    <div class="card-header innerlebel" id="headingTwo">
+                                        <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">Check to be Expire</h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body innertable">
+                                            &lt;!&ndash; Table Area &ndash;&gt;
+                                            <div class="row mt-2" id="innerTableDrug">
+                                                <script>
+
+                                                    var metadatainner = [
+                                                        //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                        {name: 'Supplier Name', search: true, datatype: 'text', property: 'name'},
+                                                        {name: 'Date', search: true, datatype: 'text', property: 'date'},
+                                                        {name: 'Amount', search: true, datatype: 'amount', property: 'amount'},
+                                                    ];
+                                                    tableForInnerForm("innerTableDrug","tblInnerDrug",metadatainner,false)
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="container-fluid" id="divitemexpirenotifi"></div>
+                    </div>
+                    <!--<div class="row mt-1" style="background-color: rgba(172,168,168,0.67)">
+                        <div class="container-fluid" id="divlowinventorty"></div>
+                    </div>-->
+
+
+                    <!--<div class="row mt-4" style="background-color: rgba(172,168,168,0.67);">
+                        <div class="container-fluid p-2" style="height: 550px">
+                            <div id='calendar' ></div>
+                        </div>
+                    </div>-->
+
+                </div>
+            </div>
+
+        </div>
+        <div id="err" style="margin-top: 200px"></div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+<div class="logoutray">
+
+</div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="requestModel" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title"><i
+                        class="fas fa-cog"></i> Appointment View</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-striped" id="requestutable">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="text-center font-weight-bold"> <h1>KM Medical Center</h1></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                No. 213/D, A/8, Panadura.
+                            </th>
+                            <th></th>
+                            <th>
+                                Tel : 038-5681122
+                            </th>
+                            <th></th>
+                            <th>
+                                Email : kmmedicalcenter@gmail.com
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Appointment No :</th>
+                        <td id="tdAno">KMCA2100002</td>
+                        <td></td>
+                        <td></td>
+                        <th>Chanaling No :</th>
+                        <td id="tdCno">01</td>
+                    </tr>
+                    <tr>
+                        <th>Date :</th>
+                        <td id="tdAdatetime">2021-03-11 7:45:00</td>
+                        <td></td>
+                        <td></td>
+                        <th>Patient Age :</th>
+                        <td id="tdPAge">25</td>
+                    </tr>
+                    <tr>
+                        <th>Patient Name :</th>
+                        <td id="tdCusName">Sashikala</td>
+                        <td></td>
+                        <td></td>
+                        <th>Gender :</th>
+                        <td id="tdPGender">Femane</td>
+                    </tr>
+
+                    </tbody>
+                    <tfoot >
+                    <tr>
+                        <th>Doctor Name :</th>
+                        <td id="tdDName" colspan="2"></td>
+                        <td></td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+
+                    </tfoot>
+
+                </table>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button"  class="btn btn-primary"  onclick="btnCheckMC()">Check</button>
+                    <button type="button"  class="btn btn-success"  onclick="btnPrintMC()">Print</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+
+    function getrequest() {
+        divnotification.innerHTML = "";
+        checkdatexpire = new Array();
+            // notification
+        checkdatexpire = httpRequest("../report/checkexpire", "GET");
+
+        if(checkdatexpire.length != 0){
+            var row = document.createElement('div');
+            row.classList.add('row');
+            row.classList.add('formcontent');
+            //row.classList.add('padding-top','180px');
+            var col12 = document.createElement('div');
+            col12.classList.add('col-md-12');
+            var rowhead = document.createElement('div');
+            rowhead.classList.add('row');
+            rowhead.style.paddingLeft = '5px';
+            rowhead.classList.add('innerlebel');
+            var head = document.createElement('h5');
+            //head.classList.add('innerlebel');
+            head.innerHTML = "Checks Near to Expire";
+
+            var rowthead = document.createElement('div');
+            rowthead.classList.add('row');
+            rowthead.classList.add('p-2');
+            var colh6 = document.createElement('div');
+            colh6.classList.add('col-md-6');
+            colh6.classList.add('font-weight-bold');
+            colh6.innerText = "Supplier";
+
+            var colh31 = document.createElement('div');
+            colh31.classList.add('col-md-3');
+            colh31.classList.add('font-weight-bold');
+            colh31.innerText = "Date";
+
+            var colh32 = document.createElement('div');
+            colh32.classList.add('col-md-3');
+            colh32.classList.add('font-weight-bold');
+            colh32.innerText = "Amount";
+
+            rowthead.appendChild(colh6);
+            rowthead.appendChild(colh31);
+            rowthead.appendChild(colh32);
+
+            rowhead.appendChild(head);
+            col12.appendChild(rowhead);
+            col12.appendChild(rowthead);
+            row.appendChild(col12);
+            divnotification.appendChild(row);
+
+            for(var index in checkdatexpire){
+
+                var rowtr = document.createElement('div');
+                rowtr.classList.add('row');
+                //rowtr.classList.add('font-weight-bold');
+                var col6 = document.createElement('div');
+                col6.classList.add('col-md-6');
+                var label1 = document.createElement('label');
+                //label1.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label1.innerHTML = checkdatexpire[index][0] ;
+
+                var col31 = document.createElement('div');
+                col31.classList.add('col-md-3');
+                var label2 = document.createElement('label');
+                //label2.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label2.innerHTML = checkdatexpire[index][3];
+
+                var col32 = document.createElement('div');
+                col32.classList.add('col-md-3');
+                var label3 = document.createElement('label');
+                //label3.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label3.innerHTML = " Rs." + toDecimal(checkdatexpire[index][2]) ;
+
+
+                rowtr.appendChild(col6);
+                rowtr.appendChild(col31);
+                rowtr.appendChild(col32);
+
+                col6.appendChild(label1);
+                col31.appendChild(label2);
+                col32.appendChild(label3);
+
+                col12.appendChild(rowtr);
+
+            }
+
+        }
+
+        divitemexpirenotifi.innerHTML = "";
+        itemexpire = new Array();
+            // notification
+        itemexpire = httpRequest("../report/itemexpire", "GET");
+        if(itemexpire.length != 0){
+            var row = document.createElement('div');
+            row.classList.add('row');
+            row.classList.add('formcontent');
+            //row.classList.add('padding-top','180px');
+            var col12 = document.createElement('div');
+            col12.classList.add('col-md-12');
+            var rowhead = document.createElement('div');
+            rowhead.classList.add('row');
+            rowhead.style.paddingLeft = '5px';
+            rowhead.classList.add('innerlebel');
+            var head = document.createElement('h5');
+            //head.classList.add('innerlebel');
+            head.innerHTML = "Items Near to Expire";
+
+            var rowthead = document.createElement('div');
+            rowthead.classList.add('row');
+            rowthead.classList.add('p-2');
+            var colh6 = document.createElement('div');
+            colh6.classList.add('col-md-3');
+            colh6.classList.add('font-weight-bold');
+            colh6.innerText = "Batch";
+
+            var colh31 = document.createElement('div');
+            colh31.classList.add('col-md-4');
+            colh31.classList.add('font-weight-bold');
+            colh31.innerText = "Item Name";
+
+            var colh32 = document.createElement('div');
+            colh32.classList.add('col-md-2');
+            colh32.classList.add('font-weight-bold');
+            colh32.innerText = "Quantity";
+
+            var colh33 = document.createElement('div');
+            colh33.classList.add('col-md-3');
+            colh33.classList.add('font-weight-bold');
+            colh33.innerText = "Date";
+
+            rowthead.appendChild(colh6);
+            rowthead.appendChild(colh31);
+            rowthead.appendChild(colh32);
+            rowthead.appendChild(colh33);
+
+            rowhead.appendChild(head);
+            col12.appendChild(rowhead);
+            col12.appendChild(rowthead);
+            row.appendChild(col12);
+            divitemexpirenotifi.appendChild(row);
+
+            for(var index in itemexpire){
+
+                var rowtr = document.createElement('div');
+                rowtr.classList.add('row');
+                //rowtr.classList.add('font-weight-bold');
+                var col6 = document.createElement('div');
+                col6.classList.add('col-md-3');
+                var label1 = document.createElement('label');
+                //label1.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label1.innerHTML = itemexpire[index][1];
+
+                var col31 = document.createElement('div');
+                col31.classList.add('col-md-4');
+                var label2 = document.createElement('label');
+                //label2.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label2.innerHTML = itemexpire[index][0];
+
+                var col32 = document.createElement('div');
+                col32.classList.add('col-md-2');
+                var label3 = document.createElement('label');
+                //label3.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label3.innerHTML = itemexpire[index][3];
+
+                var col33 = document.createElement('div');
+                col33.classList.add('col-md-3');
+                var label4 = document.createElement('label');
+                //label4.classList.add('font-weight-bold');
+                //label.classList.add('pt-2');
+                label4.innerHTML = itemexpire[index][2];
+
+
+                rowtr.appendChild(col6);
+                rowtr.appendChild(col31);
+                rowtr.appendChild(col32);
+                rowtr.appendChild(col33);
+
+                col6.appendChild(label1);
+                col31.appendChild(label2);
+                col32.appendChild(label3);
+                col33.appendChild(label4);
+
+                col12.appendChild(rowtr);
+
+            }
+        }
+       /* if(session.getObject("activeuser").employeeId.designation_id == 3 || session.getObject("activeuser").employeeId.designation_id == 5) {
+            divitemexpirenotifi.display = "none";
+            divnotification.display = "none";
+        }*/
+    }
+
+
+    function innerModify () {}
+    function innerDelete () {}
+    function innerVeiw () {}
+
+
+    function loadPrintView(ano) {
+        appoitnment = httpRequest("../appoinment/byno?no="+ano, "GET");
+        tdAno.innerHTML = appoitnment.no;
+        tdCno.innerHTML = appoitnment.chanalingnumber;
+        tdCusName.innerHTML =  appoitnment.patientId.patientTypeId.name+ " " +appoitnment.patientId.fname;
+        tdAdatetime.innerHTML = appoitnment.appoinmentdate + " "+appoitnment.apinmenttime;
+        var now = new Date();
+        var dob = new Date(appoitnment.patientId.dob);
+        var age = now.getTime()-dob.getTime();
+        tdPAge.innerHTML = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25)) + " Y";
+        tdPGender.innerHTML = appoitnment.patientId.genderId.name;
+        tdDName.innerHTML = "Dr. " + appoitnment.doctorId.fname;
+    }
+
+    function btnPrintMC(request) {
+
+        var newwindow=window.open();
+        formattab = requestutable.outerHTML;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head>" +
+            "<link rel='stylesheet' href='resourse/bootstrap/css/bootstrap.min.css'/>" +
+            "</head>" +
+            "<body style='border: 2px solid black; padding: 10px'>" +
+            "<div>"+ formattab+"</div>"+
+            "</body>" +
+            "</html>");
+    setTimeout(function () {newwindow.print(); newwindow.close();},100) ;
+
+    }
+
+    function btnCheckMC() {
+        var response = httpRequest("/request", "PUT", request);
+        if (response == "0") {
+            swal({
+                title: "Check Successfully...!",
+                text: "\n\n Status change to Checked",
+                icon: "success",
+                button: false,
+                timer: 1200,
+            });
+            getrequest();
+            $('#requestModel').modal('hide');
+        } else {
+            swal({
+                title: "You have following errors...!",
+                text: "\n\n" + response,
+                icon: "error",
+                button: true,
+            });
+        }
+
+    }
+
+</script>
+</body>
+</html>

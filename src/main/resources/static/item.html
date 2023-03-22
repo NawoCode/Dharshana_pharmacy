@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Item Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+        .select2-selection {
+
+           /* width: 305px !important;*/
+            height: 37px !important;
+            padding-top: 4px;
+        }
+
+        .select2-selection__arrow {
+            margin-top: 6px !important;
+            margin-left: 10px !important;
+        }
+
+        .select2-selection__rendered {
+            padding-right: 5px !important;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="item.js"></script>
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+
+    <link href="resources/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="resources/select2/js/select2.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown" >
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>  </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav" style="margin: -10px -10px -10px -10px; background-color: #411464;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center SUBITEM"
+                                         onclick="window.location.assign('http://localhost:8080/subitem')">
+                                        <div id="subitemcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Subitem</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center BATCH"
+                                         onclick="window.location.assign('http://localhost:8080/batch')">
+                                        <div id="batchcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Batch</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center INVENTORY"
+                                         onclick="window.location.assign('http://localhost:8080/inventorydrug')">
+                                        <div id="druginventrycart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Inventory</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header text-center cardhead">
+                            <h3 style="font-size: 38px" >Item Management</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul class="nav nav-pills mb-2 mt-2">
+                                <li class="nav-item" id="listTable" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 150px;"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>View Items</a>
+                                </li>
+                                <li class="nav-item" id="listForm" onclick="changeTab('form')">
+                                    <a class="nav-link" id="tbForm" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 150px;"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Add Item</a>
+                                </li>
+                            </ul>
+
+                            <div class="row p-3 form" id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="itemform" onsubmit="return false">
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;"><b>*</b>Required</span>
+                                            </div>
+                                        </div>
+                                        <!-- Item Code/Item type/Category/Brand -->
+                                        <div class="row">
+                                            <!-- Item Code -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtItemCode"><b>Item Code: <span style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtItemCode" class="form-control" required
+                                                           placeholder="Entre Item Code" data-toggle="tooltip" data-placement="bottom"
+                                                           title="1900000000"
+                                                           onkeyup="textFieldBinder(txtItemCode,'^[0-9]{10}$','item','itemcode','olditem')">
+                                                </div>
+                                            </div>
+                                            <!-- Item type -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbItemType"><b>Item type: <span style="color: red;">*</span></b></label>
+                                                    <select required id="cmbItemType" class="form-control"
+                                                            onchange="comboBoxBinder(cmbItemType,'','item','itemtype_id','olditem')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Category -->
+                                            <div class="col-md-3">
+                                                <div class="form-group" id="seelectCategory">
+                                                    <label for="cmbCategory"><b>Category: <span style="color: red;">*</span></b></label>
+                                                    <select required id="cmbCategory" class="form-control" required
+                                                            onchange="cmbCategoryCH()">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Brand -->
+                                            <div class="col-md-3">
+                                                <div class="form-group" id="seelectBrand">
+                                                    <label for="cmbBrand"><b>Brand: <span style="color: red;">*</span></b>
+                                                        <button class="btn-success" data-toggle="modal" data-target="#addNewBrandModal" style= "border-radius: 5px;">New</button>
+                                                        <button class="btn-success" data-toggle="modal" data-target="#addNewBrandCatModal" style= "border-radius: 5px;">Category</button></label>
+                                                    <select required id="cmbBrand" class="js-example-basic-single form-control"
+                                                            onchange="comboBox2NewBinder(cmbBrand,'','item','brand_id','olditem','seelectBrand .select2-container')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- Subcategory/Unit/Generic/Product Type -->
+                                        <div class="row">
+                                            <!-- Subcategory -->
+                                            <div class="col-md-3">
+                                                <div class="form-group" id="seelectSubCategory">
+                                                    <label for="cmbSubcategory"><b>Subcategory: <span style="color: red;">*</span></b>
+                                                        <button class="btn-success" data-toggle="modal" data-target="#addNewSubcategoryModal" style= "border-radius: 5px;">New</button></label>
+                                                    <select required id="cmbSubcategory" class="js-example-basic-single form-control"
+                                                            onchange="comboBox2NewBinder(cmbSubcategory,'','item','subcategory_id','olditem','seelectSubCategory .select2-container')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Generic -->
+                                            <div class="col-md-3">
+                                                <div class="form-group" id="seelectGeneric">
+                                                    <label for="cmbGeneric"><b>Generic: <span style="color: red;">*</span></b>
+                                                        <button class="btn-success" data-toggle="modal" data-target="#addNewGenericModal" style= "border-radius: 5px;">New</button></label>
+                                                    <select type="text" id="cmbGeneric" class="js-example-basic-single form-control" required
+                                                            onchange="comboBox2NewBinder(cmbGeneric,'','item','generic_id','olditem','seelectGeneric .select2-container')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- Unit -->
+                                            <div class="col-md-3">
+                                                <div class="form-group" id="seelectUnit">
+                                                    <label for="cmbUnit"><b>Unit: <span style="color: red;">*</span></b></label>
+                                                    <select required id="cmbUnit" class="js-example-basic-single form-control" required
+                                                            onchange="cmbUnitCH(); comboBox2NewBinder(cmbUnit,'','item','unit_id','olditem','seelectUnit .select2-container')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Product Type -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbProductType"><b>Product Type: <span style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbProductType" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbProductType,'','item','producttype_id','olditem')"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Item Name/rop/Roq -->
+                                        <div class="row">
+                                            <!-- Item Name -->
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="txtItemName"><b>Item Name: <span style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtItemName" class="form-control" required
+                                                           placeholder="Enter Item Name Here..." data-toggle="tooltip" data-placement="bottom"
+                                                           title="Ex:Maliben Gold Marie 40G"
+                                                           onkeyup="itemNameBinder()">
+                                                </div>
+                                            </div>
+                                            <!-- Prescriptionrequired -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="row" for="chPrescrip"><b>Prescription Required: <span style="color: red;">(Optional)</span></b></label>
+                                                    <div class="row">
+                                                        <input type="checkbox" id="chPrescrip" required data-toggle="toggle" data-on="Required" data-off="Not-Required"
+                                                               data-onstyle="success" data-offstyle="danger" data-width="250"
+                                                               data-height="40"
+                                                               onchange="chPrescripMC()">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- rop -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtRop"><b>Rop: <span style="color: red;">*</span></b> </label>
+                                                    <input type="text" id="txtRop" class="form-control"
+                                                           placeholder="Enter Reorder Point Here..." data-toggle="tooltip" data-placement="bottom"
+                                                           title="Ex: 10"
+                                                           onkeyup="textFieldBinder(txtRop,'^[0-9]{0,3}$','item','rop','olditem')">
+                                                </div>
+                                            </div>
+                                            <!-- Roq -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtRoq"><b>Roq: <span style="color: red;">*</span></b> </label>
+                                                    <input type="text" id="txtRoq" class="form-control"
+                                                           placeholder="Enter Reorder Quantity Here..." data-toggle="tooltip" data-placement="bottom"
+                                                           title="Ex: 10"
+                                                           onkeyup="textFieldBinder(txtRoq,'^[0-9]{0,3}$','item','roq','olditem')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- added date/Asign By/status/description -->
+                                        <div class="row">
+                                            <!-- added date -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dteAsignDate"><b>Added Date: <span style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteAsignDate" class="form-control"
+                                                           onkeyup="comboBoxBinder(dteAsignDate,'','item','addeddate','olditem')">
+                                                </div>
+                                            </div>
+                                            <!-- Asign By -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbAssignBy"><b>Added By: <span style="color: red;">*</span></b></label>
+                                                    <select id="cmbAssignBy" required class="form-control"
+                                                            onchange="comboBoxBinder(cmbAssignBy,'','item','employee_id','olditem')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- status -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbStatus"><b>Item Status: <span style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbStatus" class="form-control"
+                                                            onchange="comboBoxBinder(cmbStatus,'','item','itemstatus_id','olditem')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- description -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtItmDescription"><b>Item Descripton:
+                                                        <span style="color: red;">(Optional)</span></b></label>
+                                                    <textarea type="text" id="txtItmDescription" class="form-control"
+                                                              placeholder="Add Description here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Description"
+                                                              onkeyup="textFieldBinder(txtItmDescription,'^.*$','item','description','olditem')"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- buttons -->
+                                        <div class="text-right">
+                                            <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                                    style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                            <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Item Code', search: true, datatype: 'text', property: 'itemcode'},
+                                            {name: 'Brand', search: true, datatype: 'text', property: 'brand_id.name'},
+                                            {name: 'Subcategory', search: true, datatype: 'text', property: 'subcategory_id.name'},
+                                            {
+                                                name: 'Category',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'subcategory_id.category_id.name'
+                                            },
+                                            {
+                                                name: 'Product type',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'producttype_id.name'
+                                            },
+                                            {name: 'Item Name', search: true, datatype: 'text', property: 'itemname'},
+                                            {name: 'ROP', search: true, datatype: 'text', property: 'rop'},
+                                            {name: 'ROQ', search: true, datatype: 'text', property: 'roq'},
+                                            {
+                                                name: 'Item Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'itemstatus_id.name'
+                                            },
+                                        ];
+                                        //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                        table("tableParent", "tblItem", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal add new brand -->
+<div class="modal fade bd-example-modal-lg" id="addNewBrandModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg modalsize" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel1" style="font-size: 40px">Add New Brand</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <!-- Form -->
+                <div class="row p-3 form"  id="divFromNew">
+                    <div class="col-md-12">
+                        <form class="" id="customerform" onsubmit="return false">
+                            <div class="row mt-2">
+                                <div class="col-md-12 container-fluid text-right">
+                                    <span style="color: red;"><b>*</b>required</span>
+                                </div>
+                            </div>
+                            <!-- Brand Name -->
+                            <div class="row">
+                                <!-- Brand Name -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="txtNewBrand"><b>Brand Name: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtNewBrand" class="form-control"
+                                               placeholder="Ex:Anna" required data-toggle="tooltip" data-placement="bottom"
+                                               title="Type Brand Name"
+                                               onkeyup="textFieldBinder(txtNewBrand,'^([A-Z][a-z]+)$','brand','name','oldbrand')">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- buttons -->
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit" id="btnBrandClose" data-dismiss="modal"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Close</button>
+                                <button class="btn btn-info " type="button" id="btnBrandClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-success" style="width: 25%" type="submit" id="btnBrandAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Add</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!-- Modal add new generic -->
+<div class="modal fade bd-example-modal-lg" id="addNewGenericModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg modalsize" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel3" style="font-size: 40px">Add New Brand</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <!-- Form -->
+                <div class="row p-3 form"  id="divFromGeneric">
+                    <div class="col-md-12">
+                        <form class="" id="genericform" onsubmit="return false">
+                            <div class="row mt-2">
+                                <div class="col-md-12 container-fluid text-right">
+                                    <span style="color: red;"><b>*</b>required</span>
+                                </div>
+                            </div>
+                            <!-- Generic Name -->
+                            <div class="row">
+                                <!-- Generic Name -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="txtNewGeneric"><b>Generic Name: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtNewGeneric" class="form-control"
+                                               placeholder="Type Generic Name..." required data-toggle="tooltip" data-placement="bottom"
+                                               title="Type Brand Name"
+                                               onkeyup="textFieldBinder(txtNewGeneric,'^([a-zA-Z]+|[a-zA-Z]+\\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\\s{1}[a-zA-Z]{3,}\\s{1}[a-zA-Z]{1,})$','generic','name','oldgeneric')">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- buttons -->
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit" id="btnGenericClose" data-dismiss="modal"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Close</button>
+                                <button class="btn btn-info " type="button" id="btnGenericClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-success" style="width: 25%" type="submit" id="btnGenericdAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Add</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!-- Modal add new subcategory -->
+<div class="modal fade bd-example-modal-lg" id="addNewBrandCatModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg modalsize" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel4" style="font-size: 40px">Add New Subcategory</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <!-- Form -->
+                <div class="row p-3 form"  id="divFrombrandat">
+                    <div class="col-md-12">
+                        <form class="" id="brandCatform" onsubmit="return false">
+                            <div class="row mt-2">
+                                <div class="col-md-12 container-fluid text-right">
+                                    <span style="color: red;"><b>*</b>required</span>
+                                </div>
+                            </div>
+                            <!-- Brand Name -->
+                            <div class="row">
+                                <!-- Brand -->
+                                <div class="col-md-6">
+                                    <div class="form-group" id="seelectBrandcat">
+                                        <label for="cmbBrandcat"><b>Brand: <span style="color: red;">*</span></b></label>
+                                        <select required id="cmbBrandcat" class="js-example-basic-single form-control" style="width: 300px"
+                                                onchange="comboBox2NewBinder(cmbBrandcat,'','brandhascategory','brand_id','oldbrandhascategory','seelectBrandcat .select2-container')">
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- category -->
+                                <div class="col-md-6">
+                                    <div class="form-group" id="seelectcategoryBrand">
+                                        <label for="cmbcategoryBrand"><b>Category: <span style="color: red;">*</span></b></label>
+                                        <select required id="cmbcategoryBrand" class="js-example-basic-single form-control" style="width: 300px"
+                                                onchange="comboBox2NewBinder(cmbcategoryBrand,'','brandhascategory','category_id','oldbrandhascategory','seelectcategoryBrand .select2-container')">
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- buttons -->
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit" id="btnBrandCatClose" data-dismiss="modal"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Close</button>
+                                <button class="btn btn-info " type="button" id="btnBrandCatClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-success" style="width: 25%" type="submit" id="btnBrandCatAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Add</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!-- Modal add new subcategory -->
+<div class="modal fade bd-example-modal-lg" id="addNewSubcategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg modalsize" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel2" style="font-size: 40px">Add New Subcategory</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <!-- Form -->
+                <div class="row p-3 form"  id="divFromSubcategory">
+                    <div class="col-md-12">
+                        <form class="" id="subcategoryform" onsubmit="return false">
+                            <div class="row mt-2">
+                                <div class="col-md-12 container-fluid text-right">
+                                    <span style="color: red;"><b>*</b>required</span>
+                                </div>
+                            </div>
+                            <!-- Brand Name -->
+                            <div class="row">
+                                <!-- Brand Name -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtNewsubcategory"><b>Subcategory Name: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtNewsubcategory" class="form-control"
+                                               placeholder="Ex:Anna" required data-toggle="tooltip" data-placement="bottom"
+                                               title="Type Subcategory Name"
+                                               onkeyup="textFieldBinder(txtNewsubcategory,'^([A-Z][a-z]+)$','subcategory','name','oldsubcategory')">
+                                    </div>
+                                </div>
+                                <!-- category -->
+                                <div class="col-md-6">
+                                    <div class="form-group" id="seelectcategorySub">
+                                        <label for="cmbcategorySub"><b>Category: <span style="color: red;">*</span></b></label>
+                                        <select required id="cmbcategorySub" class="js-example-basic-single form-control" style="width: 310px"
+                                                onchange="comboBox2NewBinder(cmbcategorySub,'','subcategory','category_id','oldsubcategory','seelectcategorySub .select2-container')">
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- buttons -->
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit" id="btnSubcategoryClose" data-dismiss="modal"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Close</button>
+                                <button class="btn btn-info " type="button" id="btnSubcategoryClear" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-success" style="width: 25%" type="submit" id="btnSubcategoeyAdd">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Add</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal veiw item -->
+<div class="modal fade bd-example-modal-lg" id="dataVeiwModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 40px">View Item Details</h5>
+            </div>
+            <div class="modal-body modelcontent" style="border: 2px solid rgba(146, 56, 201, 0.9)">
+                <table id="printformtable" class="mt-5 table table-borderless table-striped">
+                    <tbody>
+                    <tr>
+                        <th>Item code</th>
+                        <td >:</td>
+                        <td id="tdicode"></td>
+
+                        <th>Item Name</th>
+                        <td >:</td>
+                        <td colspan="3" id="tdiname"></td>
+                    </tr>
+                    <tr>
+                        <th>Item Type</th>
+                        <td >:</td>
+                        <td id="tditype"></td>
+
+                        <th>Brand</th>
+                        <td >:</td>
+                        <td id="tdbrand"></td>
+
+                        <th>Category</th>
+                        <td >:</td>
+                        <td id="tdcategory"></td>
+                    </tr>
+                    <tr>
+                        <th>Subcategory</th>
+                        <td >:</td>
+                        <td id="tdsubcategory"></td>
+
+                        <th>Item Unit</th>
+                        <td >:</td>
+                        <td id="tdunit"></td>
+
+                        <th>Generic Name</th>
+                        <td >:</td>
+                        <td id="tdgeneric"></td>
+                    </tr>
+                    <tr>
+                        <th>Product Type</th>
+                        <td >:</td>
+                        <td id="tdproducttype"></td>
+
+                        <th>ROP</th>
+                        <td >:</td>
+                        <td id="tdrop"></td>
+
+                        <th>ROQ</th>
+                        <td >:</td>
+                        <td id="tdroq"></td>
+                    </tr>
+                    <tr>
+                        <th>Assign By</th>
+                        <td >:</td>
+                        <td id="tdasign"></td>
+
+                        <th>Added Date</th>
+                        <td >:</td>
+                        <td id="tdaddate"></td>
+
+                        <th>Item Status</th>
+                        <td >:</td>
+                        <td id="tdistatus"></td>
+                    </tr>
+                    <tr>
+                        <th>Item Description</th>
+                        <td >:</td>
+                        <td colspan="4" id="tddesc"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footert" style="background-color: rgba(199, 187, 215, 0.9)">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 mb-3 mt-3">
+                        <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Print</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>`
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

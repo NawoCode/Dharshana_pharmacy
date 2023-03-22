@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Batch Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .modal-dialog{
+            max-width: 1100px;
+        }
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="batch.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown" >
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>  </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav" style="margin: -10px -10px -10px -10px; background-color: #411464;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center ITEM"
+                                         onclick="window.location.assign('http://localhost:8080/item')">
+                                        <div id="itemcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Item</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center SUBITEM"
+                                         onclick="window.location.assign('http://localhost:8080/subitem')">
+                                        <div id="subitemcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Subitem</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center INVENTORY"
+                                         onclick="window.location.assign('http://localhost:8080/inventorydrug')">
+                                        <div id="druginventrycart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Inventory</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header bg-primary text-center cardhead">
+                            <h3 style="font-size: 38px">Batch Management</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul class="nav nav-pills mb-2">
+                                <li class="nav-item" id="listTable" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 180px;"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>Veiw Batches</a>
+                                </li>
+                                <li class="nav-item" id="listForm" onclick="changeTab('form')">
+                                    <a class="nav-link" id="tbForm" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 160px;"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Add Batches</a>
+                                </li>
+                            </ul>
+                            <!-- Form -->
+                            <div class="row p-3 form"  id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="customerform" onsubmit="return false">
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;"><b>*</b>required</span>
+                                            </div>
+                                        </div>
+                                        <!-- Batch No/item/Sales price/Purchase Price -->
+                                        <div class="row">
+                                            <!-- Batch No -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtBatchNo"><b>Batch No: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtBatchNo" class="form-control" placeholder="Entre Bill No"
+                                                           data-toggle="tooltip" data-placement="bottom" title="Bill No should stsrt With B and contain 9 numbers.."
+                                                           onkeyup="textFieldBinder(txtBatchNo,'^[B][0-9]{9}$','batch','c','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- item -->
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="cmbItem"><b>Item Name: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbItem" class="form-control"
+                                                           required data-toggle="tooltip" data-placement="bottom"
+                                                           title="down..Select item from drop ."
+                                                           onchange="comboBoxBinder(cmbItem,'^([A-Z][a-z]+)$','batch','item_id','oldbatch')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- Sales price -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtSalePrice"><b>Sales Price: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtSalePrice" class="form-control"
+                                                           placeholder="0.00" required data-toggle="tooltip" data-placement="bottom"
+                                                           title="Enter sales price with cents."
+                                                            onkeyup="textFieldBinder(txtSalePrice,'^[0-9]{1,6}[.][0-9]{2}$','batch','salesprice','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- Purchase Price -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtPurchasePrice"><b>Purchase Price: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtPurchasePrice" class="form-control" placeholder="0.00" required
+                                                           data-toggle="tooltip" data-placement="bottom" title="Enter sales price with cents."
+                                                           onkeyup="textFieldBinder(txtPurchasePrice,'^[0-9]{1,6}[.][0-9]{2}$','batch','purchaseprice','oldbatch')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- expdate/mfdate/availableQty/totalQty/returnQty -->
+                                        <div class="row">
+                                            <!-- expdate -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dtExpDate"><b>Expire Date: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dtExpDate" class="form-control" required
+                                                              onchange="textFieldBinder(dtExpDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','batch','expdate','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- mfdate -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dtMfDate"><b>Manufactured Date: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dtMfDate" class="form-control" required
+                                                              onchange="textFieldBinder(dtMfDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','batch','mfdate','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- availableQty -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtAvailQty"><b>Available Qty: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtAvailQty" class="form-control"
+                                                              placeholder="0" required data-toggle="tooltip"
+                                                              data-placement="bottom" title="Enter Number with 3 digits..."
+                                                              onkeyup="textFieldBinder(txtAvailQty,'^[0-9]{1,3}$','batch','avaqty','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- totalQty -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtTotalQty"><b>Total Qty: <span style="color: red;">*</span></b></label>
+                                                    <input type="text" id="txtTotalQty" class="form-control"
+                                                              placeholder="0" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Enter Number with 0-3 digits..." required
+                                                              onkeyup="textFieldBinder(txtTotalQty,'^[0-9]{1,3}$','batch','totalqty','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- returnQty -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtReturnQty"><b>Return Qty:</b>
+                                                        <span style="color: red;">*</span></label>
+                                                    <input type="text" id="txtReturnQty" class="form-control" required
+                                                              placeholder="0" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Enter Number with 0-3 digits..."
+                                                              onkeyup="textFieldBinder(txtReturnQty,'^[0-9]{1,3}$','batch','returnqty','oldbatch')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- added date/status/Asign By/description -->
+                                        <div class="row">
+                                            <!-- added date -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="dteAsignDate"><b>Asign Date: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteAsignDate" class="form-control"
+                                                           onchange="comboBoxBinder(dteAsignDate,'','batch','addeddate','oldbatch')">
+                                                </div>
+                                            </div>
+                                            <!-- status -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cmbStatus"><b>Batch Status: <span
+                                                            style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbStatus" class="form-control"
+                                                            onchange="comboBoxBinder(cmbStatus,'','batch','batchstatus_id','oldbatch')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- Asign By -->
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cmbAssignBy"><b>Asign By: <span style="color: red;">*</span></b></label>
+                                                    <select id="cmbAssignBy" required class="form-control"
+                                                            onchange="comboBoxBinder(cmbAssignBy,'','batch','employee_id','oldbatch')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- description -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtDescription"><b>Batch Descripton:
+                                                        <span style="color: red;">(Optional)</span></b></label>
+                                                    <textarea type="text" id="txtDescription" class="form-control"
+                                                              placeholder="Add Description here..." rows="2" data-toggle="tooltip"
+                                                              data-placement="bottom" title="Write any note regarding batch status.."
+                                                              onkeyup="textFieldBinder(txtDescription,'^.*$','batch','description','oldbatch')"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- buttons -->
+                                        <div class="text-right">
+                                            <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                                    style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>
+                                            <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                       /* function getPrchase(ob) {
+                                            return parseFloat(ob.purchaseprice).toFixed(2);
+                                        }
+                                        function getSaleP(ob) {
+                                            return parseFloat(ob.salesprice).toFixed(2);
+                                        }*/
+
+                                        var metadata = [
+                                            {name: 'Batch No', search: true, datatype: 'text', property: 'batchno'},
+                                            {name: 'Item Name', search: true, datatype: 'text', property: 'item_id.itemname'},
+                                            {name: 'Sales Price', search: false, datatype: 'amount', property: "salesprice"},
+                                            {name: 'Purchasr Price', search: false, datatype: 'amount', property: "purchaseprice"},
+                                            {name: 'EXP', search: false, datatype: 'text', property: 'expdate'},
+                                            {name: 'Ava. Qty', search: false, datatype: 'text', property: 'avaqty'},
+                                            {name: 'Tot. Qty', search: false, datatype: 'text', property: 'totalqty'},
+                                            {name: 'Return Qty', search: false, datatype: 'text', property: 'returnqty'},
+                                            {
+                                                name: 'Batch status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'batchstatus_id.name'
+                                            },
+                                        ];
+                                        //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                        table("tableParent", "tblBatch", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal veiw item -->
+<div class="modal fade bd-example-modal-lg" id="dataVeiwModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 40px">Veiw Batch Details</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <table id="printformtable" class="mt-3 table table-borderless table-striped">
+                    <tbody>
+                    <tr>
+                        <th>Bach No</th>
+                        <td>:</td>
+                        <td id="tdbiino" ></td>
+
+                        <th>Item Name</th>
+                        <td>:</td>
+                        <td colspan="3" id="tditem"></td>
+                    </tr>
+                    <tr>
+                        <th>Sales Price(Rs.)</th>
+                        <td>:</td>
+                        <td id="tdsalep"></td>
+
+                        <th>Purchasr Price(Rs.)</th>
+                        <td>:</td>
+                        <td id="tdpurchasep"></td>
+
+                        <th>Expie Date</th>
+                        <td>:</td>
+                        <td id="tdexp"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Manufactred Date</th>
+                        <td>:</td>
+                        <td id="tdmfd"></td>
+
+                        <th>Available Qty</th>
+                        <td>:</td>
+                        <td id="tdavaiqty"></td>
+
+                        <th>Total Qty</th>
+                        <td>:</td>
+                        <td id="tdtotqty"></td>
+                    </tr>
+                    <tr>
+                        <th>Return Qty</th>
+                        <td>:</td>
+                        <td id="tdretqty"></td>
+                    </tr>
+                    <tr>
+                        <th>Assign By</th>
+                        <td>:</td>
+                        <td id="tdasign"></td>
+
+                        <th>Added Date</th>
+                        <td>:</td>
+                        <td id="tdaddate"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Batch Status</th>
+                        <td>:</td>
+                        <td id="tdistatus"></td>
+
+                        <th>Batch Description</th>
+                        <td>:</td>
+                        <td colspan="4" id="tddesc"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer"  style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte   " data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn   " onclick="btnPrintRowMC()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,220 @@
+/* Validation Colors for Input Controls */
+.rowbcolor{
+    margin-top: 5px;
+    border-bottom: 2px solid #005cbf;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: rgba(231,223,238,0.9);
+    opacity: 1;
+}
+.cbody{
+    overflow: hidden;
+    transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out;
+}
+
+.formcontent{
+    border: 2px solid rgba(215, 206, 229, 0.9);
+    border-radius: 10px;
+    background-image: linear-gradient(rgba(231,223,238,0.9), rgba(199, 187, 215, 0.9));
+}
+.cardhead{
+    margin-top: 0px;
+    padding-top:30px;
+    border-radius: 10px;
+    height: 90px;
+    color: azure;
+    background-image: linear-gradient(rgba(170, 45, 241, 0.95), rgba(183, 134, 211, 0.93));
+}
+.cardstyle{
+    border: 1px solid rgba(231, 205, 238, 0.15);
+    background-color: rgba(231, 205, 238, 0.15);
+    margin: 0px;
+    padding:0px;
+}
+.tabtable{
+    background-color: rgb(23, 23, 24);
+    color: rgb(255, 255, 255);
+    height: 50px;
+}
+.tabform{
+    background-color: rgb(23, 23, 24);
+    color: rgb(255, 255, 255);
+    margin-inline-end: 1040px;
+    margin-block-end: 5px;
+}
+.form{
+    background-color: rgba(231,223,238,0.9);
+    border-radius: 10px;
+    /*border: 2px solid rgba(66, 3, 94, 0.96);*/
+}
+.innerhead{
+    margin-top: 0px;
+    padding-top:15px;
+    height: 60px;
+    color: azure;
+    background-image: linear-gradient(rgba(146, 56, 201, 0.9), rgba(206, 168, 231, 0.9));
+}
+.innerlebel{
+    color: azure;
+    background-color: rgba(146, 56, 201, 0.87);
+}
+.innercard{
+    background-color: rgba(206, 143, 238, 0.38);
+    border: 1px solid rgba(231,223,238,0.9);
+}
+.innerform{
+    background-color: rgba(209, 176, 231, 0.38);
+    border: 1px solid rgba(231,223,238,0.9);
+}
+.innertable{
+    background-color: rgba(209, 176, 231, 0.38);
+    border: 1px solid rgba(231,223,238,0.9);
+}
+.tblbtnprint{
+    border-radius: 10px;
+    border: 2px solid rgba(66, 3, 94, 0.68);
+    color: #ffffff;
+    background-image: linear-gradient(rgba(106, 47, 129, 0.9), rgba(207, 152, 236, 0.9));
+}
+
+
+body::-webkit-scrollbar{
+    border-radius: 10px;
+    background-image: linear-gradient(rgba(19, 130, 243, 0.93), rgba(212, 255, 254, 0.68));
+}
+body::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+
+
+
+.invalid .form-control{
+    background-color: pink;
+}
+.valid .form-control{
+    background-color: lightgreen;
+}
+.updated .form-control{
+    background-color: khaki;
+}
+
+
+.file-box{
+    height: 87px;
+    margin-bottom: 7px;
+    border:1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
+.file-box>img{
+    position: absolute;
+    height: 75px;
+    top: 5px;
+    left: 5px;
+}
+
+.file-box>ul{
+    position: absolute;
+    top: 5px;
+    left: 87px;
+    right: 5px;
+    padding: 0px;
+    list-style: none;
+    color: #555;
+    text-align: right;
+}
+
+
+/* Profile Image */
+
+.bntVisibity{
+    cursor: not-allowed;
+}
+
+
+.profileImage {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+
+
+/* Profile Image Dropdown */
+
+
+/* row print */
+.head{
+    height: 85px;
+    align-content: center;
+    color: azure;
+    font-size: 2rem;
+    background-image: linear-gradient(rgba(170, 45, 241, 0.95), rgba(183, 134, 211, 0.93));
+}
+
+.closebtn{
+    border: #6b2828;
+    background-color: #6b2828;
+
+}
+
+.modelcontent{
+    background-image: linear-gradient(rgba(231,223,238,0.9), rgba(199, 187, 215, 0.9));
+    border: 2px solid rgba(146, 56, 201, 0.9);
+}
+
+.printBtn{
+    width: 125px;
+    border-radius: 10px;
+    border: 2px solid rgba(66, 3, 94, 0.68);
+    color: #ffffff;
+    background-image: linear-gradient(rgba(106, 47, 129, 0.9), rgba(207, 152, 236, 0.9));
+}
+
+.closebte{
+    width: 125px;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 2px solid #490101;
+    color: #ffffff;
+    background-image: linear-gradient(darkred, rgb(152, 72, 72));
+}
+
+/*spayment*/
+.leftbar{
+    border-right-color: red;
+}
+
+/*report*/
+.heading{
+    text-align: center;
+    color: #6f42c1;
+    margin-top: -23px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    width: 300px;
+    padding-bottom: 5px;
+}
+.headingnotif{
+    text-align: center;
+    color: #6f42c1;
+    margin-top: -23px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    width: 200px;
+
+}
+
+.headnoti{
+    padding-left: 130px;
+}
+
+#err{
+    display: none;
+}

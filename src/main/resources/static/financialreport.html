@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Financial Report</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="resources/chart/Chart.js"></script>
+
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown">
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i
+                                class="fa fa-th"></i> </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav"
+                                style="margin: -10px -10px -10px -10px; background-color: yellowgreen;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/employee')">
+                                        <div id="employeecart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Empolyee</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/user')">
+                                        <div id="usercart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">User</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center"
+                                         onclick="window.location.assign('http://localhost:8080/privilage')">
+                                        <div id="privilagecart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Privilage</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+
+                </div>
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as : <span id="spnDesignation"> </span></p>
+                </div>
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header text-center cardhead">
+                            <h3 style="font-size: 38px" >Financial Report</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <!-- Month -->
+                            <div class="row formcontent">
+                                <!-- sratr date -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="dteStartDate"><b>Start Date: <span style="color: red;">*</span></b></label>
+                                        <input type="date" id="dteStartDate" min="" max="" required class="form-control" onchange="dteStartDateCH()"
+                                               data-toggle="tooltip" data-placement="bottom" title="Select the date from calender...">
+                                              <!-- onchange="textFieldBinder(dteRequireDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','corder','requiredate','oldcorder')"
+                                               onkeyup="dateValidationKU('max',dteRequireDate,'corder','requiredate',7,'oldcorder','addeddate')"-->
+                                    </div>
+                                </div>
+                                <!-- end date  -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="dteEndDate"><b>End Date: <span style="color: red;">*</span></b></label>
+                                        <input type="date" id="dteEndDate" min="" max="" required class="form-control" onchange="dteEndDateCH()"
+                                               data-toggle="tooltip" data-placement="bottom" title="Select the date from calender...">
+                                              <!-- onchange="textFieldBinder(dteRequireDate,'^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$','corder','requiredate','oldcorder')"
+                                               onkeyup="dateValidationKU('max',dteRequireDate,'corder','requiredate',7,'oldcorder','addeddate')"-->
+                                    </div>
+                                </div>
+                                <!-- type  -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="cmbTypeId"><b>Type: <span style="color: red;">*</span></b></label>
+                                        <select type="text" id="cmbTypeId" class="form-control" placeholder="Select report type" required onchange="cmbTypeIdCH()"
+                                                data-toggle="tooltip" data-placement="bottom" title="Select type from this dropdown...">
+                                                <option selected disabled value="">Select Type</option>
+                                                <option value="Annual">Annual</option>
+                                                <option value="Monthly">Monthly</option>
+                                                <option value="Weekly">Weekly</option>
+                                                <option value="Daily">Daily</option>
+                                               <!-- onchange="comboBoxBinder(cmbCustomerId,'','corder','customer_id','oldcorder')"-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn bg-primary" onclick="generateReprint()" style="width: 80%; margin-top: 10%">Generate Report</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn bg-primary" onclick="btnClearReportMC()" style="width: 80%; margin-top: 10%">Clear</button>
+                                </div>
+                            </div>
+
+                            <ul class="nav nav-pills mb-2 mt-2 pb-3 pt-2">
+                                <li class="nav-item" id="listExpense" onclick="changeReport('expense')">
+                                    <a class="nav-link active" id="tbExpense" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 150px; margin-right: 10px;"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>Expense</a>
+                                </li>
+                                <li class="nav-item" id="listIncome" onclick="changeReport('income')">
+                                    <a class="nav-link" id="tbIncome" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 150px; margin-right: 10px;"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Income</a>
+                                </li>
+                                <li class="nav-item" id="listProfit" onclick="changeReport('profit')">
+                                    <a class="nav-link" id="tbProfit" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 150px;  "><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Profit</a>
+                                </li>
+                            </ul>
+                            <!--expenses-->
+                            <div class="row p-3" id="divExpenses" style="display: none">
+                                <!--expenses chart-->
+                                <div class="col-md-6 formcontent" >
+                                    <div style="padding-left: 180px">
+                                        <h2 class="heading"> Expenses Chart </h2>
+                                    </div>
+                                    <div class="p-2">
+                                        <button class="btn tblbtnprint font-weight-bold" onclick="printExpensesChart()"> Print Chart </button>
+                                    </div>
+                                    <div style="width: 100%; height: 400%" id="chartParentExpenses">
+                                        <canvas class="form" id="myChartExpenses" width="200" height="70"></canvas>
+                                    </div>
+                                </div>
+                                <!--expenses table-->
+                                <div class="col-md-6 formcontent">
+                                        <div class="row" style="padding-left: 180px">
+                                            <h2 class="heading"> Expenses Table </h2>
+                                        </div>
+                                        <div class="row p-2">
+                                            <button class="btn tblbtnprint font-weight-bold" onclick="printExpensesTbl()"> Print Table </button>
+                                        </div>
+
+                                        <hr/>
+                                        <!--table-->
+                                        <div class="table-responsive" id="tableParent1" class="table-container ml-2">
+
+                                            <script>
+
+                                                function getNameColumn(ob) {
+                                                    return ob.callingname + "(" + ob.number + ")";
+                                                }
+
+                                                var metadata = [
+                                                    {name: 'Year/Month/Date', search: true, datatype: 'text', property: 'yearmonth'},
+                                                    {name: 'Amount(Rs.)', search: true, datatype: 'amount', property: 'amount'},
+
+                                                ];
+                                                //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                                table("tableParent1", "tblMonthlyExpenses", metadata, false);
+
+                                            </script>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <!--Income-->
+                            <div class="row p-3" id="divIncome" style="display: none">
+                                <!--Income chart-->
+                                <div class="col-md-6 formcontent" >
+                                    <div style="padding-left: 180px">
+                                        <h2 class="heading"> Income Chart </h2>
+                                    </div>
+                                    <div class="p-2">
+                                        <button class="btn tblbtnprint font-weight-bold" onclick="printIncomeChart()">Print Chart</button>
+                                    </div>
+                                    <div style="width: 100%; height: 400%" id="chartParentIncome">
+                                        <canvas class="form" id="myChartIncome" width="200" height="70"></canvas>
+                                    </div>
+
+                                </div>
+                                <!--Income table-->
+                                <div class="col-md-6 formcontent">
+                                        <div class="row" style="padding-left: 180px">
+                                            <h2 class="heading"> Income Table </h2>
+                                        </div>
+                                        <div class="row p-2">
+                                            <button class="btn tblbtnprint font-weight-bold" onclick="printIncomeTbl()"> Print Table </button>
+                                        </div>
+
+                                        <hr/>
+                                        <!--table-->
+                                        <div class="table-responsive" id="tableParent2" class="table-container ml-2">
+
+                                            <script>
+
+                                                function getNameColumn(ob) {
+                                                    return ob.callingname + "(" + ob.number + ")";
+                                                }
+
+                                                var metadata = [
+                                                    {name: 'Year/Month/Date', search: true, datatype: 'text', property: 'yearmonth'},
+                                                    {name: 'Amount(Rs.)', search: true, datatype: 'amount', property: 'amount'},
+
+                                                ];
+                                                //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                                table("tableParent2", "tblMonthlyIncome", metadata, false);
+
+                                            </script>
+                                        </div>
+                                </div>
+                            </div>
+                            <!--profit-->
+                            <div class="row p-3" id="divProfit" style="display: none">
+                                <!--profit chart-->
+                                <div class="col-md-6 formcontent" >
+                                    <div style="padding-left: 180px">
+                                        <h2 class="heading"> Profit Chart </h2>
+                                    </div>
+                                    <div class="p-2">
+                                        <button class="btn tblbtnprint font-weight-bold" onclick="printProfitChart()">Print Chart</button>
+                                    </div>
+                                    <div style="width: 100%; height: 400%" id="chartParentProfit">
+                                        <canvas class="form" id="myChartProfit" width="200" height="70"></canvas>
+                                    </div>
+
+                                </div>
+                                <!--profit table-->
+                                <div class="col-md-6 formcontent">
+                                        <div class="row" style="padding-left: 180px">
+                                            <h2 class="heading"> Profit Table </h2>
+                                        </div>
+                                        <div class="row p-2">
+                                            <button class="btn tblbtnprint font-weight-bold" onclick="printProfitTbl()"> Print Table </button>
+                                        </div>
+
+                                        <hr/>
+                                        <!--table-->
+                                        <div class="table-responsive" id="tableParent3" class="table-container ml-2">
+
+                                            <script>
+
+                                                function getNameColumn(ob) {
+                                                    return ob.callingname + "(" + ob.number + ")";
+                                                }
+
+                                                var metadata = [
+                                                    {name: 'Year/Month/Date', search: true, datatype: 'text', property: 'yearmonth'},
+                                                    {name: 'Expenses(Rs.)', search: true, datatype: 'amount', property: 'incomeamount'},
+                                                    {name: 'Income(Rs.)', search: true, datatype: 'amount', property: 'expensesamount'},
+                                                    {name: 'Profit(Rs.)', search: true, datatype: 'amount', property: 'profitamount'},
+
+                                                ];
+                                                //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                                table("tableParent3", "tblMonthlyProfit", metadata, false);
+
+                                            </script>
+                                        </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    function changeReport(viewname) {
+        if(viewname=='expense'){
+            tbExpense.classList.add('active');
+            tbIncome.classList.remove('active');
+            tbProfit.classList.remove('active');
+            $('#divExpenses').removeAttr("style");
+            $('#divIncome').css("display","none");
+            $('#divProfit').css("display","none");
+
+        }
+        if(viewname=='income'){
+            tbExpense.classList.remove('active');
+            tbIncome.classList.add('active');
+            tbProfit.classList.remove('active');
+            $('#divExpenses').css("display","none");
+            $('#divIncome').removeAttr("style");
+            $('#divProfit').css("display","none");
+
+        }
+        if(viewname=='profit'){
+            tbExpense.classList.remove('active');
+            tbIncome.classList.remove('active');
+            tbProfit.classList.add('active');
+            $('#divExpenses').css("display","none");
+            $('#divIncome').css("display","none");
+            $('#divProfit').removeAttr("style");
+
+        }
+
+    }
+    changeReport('expense');
+    loadReport();
+
+    function loadReport() {
+        valid = "2px solid green";
+        invalid = "2px solid red";
+        initial = "2px solid #d6d6c2";
+        updated = "2px solid #ff9900";
+        active = "#ff9900";
+
+        dteStartDate.value = "";
+        dteStartDate.max = nowDate('date');
+        dteEndDate.value = "";
+        dteEndDate.max = nowDate('date');
+        cmbTypeId.value = "";
+
+        dteStartDate.style.border = initial;
+        dteEndDate.style.border = initial;
+        cmbTypeId.style.border = initial;
+
+        tblMonthlyExpenses.children[1].innerHTML = "";
+        if (tblMonthlyExpenses.children[2] != undefined){
+            tblMonthlyExpenses.children[2].innerHTML = "";
+        }
+
+        tblMonthlyIncome.children[1].innerHTML = "";
+        if (tblMonthlyIncome.children[2] != undefined){
+            tblMonthlyIncome.children[2].innerHTML = "";
+        }
+
+        tblMonthlyProfit.children[1].innerHTML = "";
+        if (tblMonthlyProfit.children[2] != undefined){
+            tblMonthlyProfit.children[2].innerHTML = "";
+        }
+
+        chartParentExpenses.innerHTML = '';
+        $('#chartParentExpenses').append('<canvas class="form" id="myChartExpenses" width="200" height="70"></canvas>');
+
+        chartParentIncome.innerHTML = '';
+        $('#chartParentIncome').append('<canvas class="form" id="myChartIncome" width="200" height="70"></canvas>');
+
+        chartParentProfit.innerHTML = '';
+        $('#chartParentProfit').append('<canvas class="form" id="myChartProfit" width="200" height="70"></canvas>');
+    }
+
+    function dteStartDateCH() {
+        dteStartDate.style.border = valid;
+    }
+
+    function dteEndDateCH() {
+        dteEndDate.style.border = valid;
+    }
+
+    function cmbTypeIdCH() {
+        cmbTypeId.style.border = valid;
+    }
+
+    function generateReprint() {
+        //expenses
+        var expensesreportdata = httpRequest("/report/expensesreport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+        var expensesreportdata1 = httpRequest("/report/expensesreport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+        for (var index in expensesreportdata1 ){
+            if(cmbTypeId.value == "Monthly") {
+                expensesreportdata1[index][3] = "0.00";
+            }
+            else if(cmbTypeId.value == "Weekly") {
+                expensesreportdata1[index][4] = "0.00";
+            }else {
+                expensesreportdata1[index][2] = "0.00";
+            }
+        }
+
+
+        var tableData = new Array();
+        var chartLabeles =  new Array();
+        var chartData =  new Array();
+        var totalamount =  0;
+
+        for (var index in expensesreportdata){
+            if(cmbTypeId.value == "Monthly"){
+                chartLabeles.push(expensesreportdata[index][0] + " - " + expensesreportdata[index][1]);//date
+                chartData.push(expensesreportdata[index][2]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= expensesreportdata[index][0] + " - " + expensesreportdata[index][1];//date
+                tdata.amount= expensesreportdata[index][2];//amount
+                tableData.push(tdata);
+
+                totalamount = (parseFloat(totalamount) + parseFloat(expensesreportdata[index][2])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Annual"){
+                chartLabeles.push(expensesreportdata[index][0]);//date
+                chartData.push(expensesreportdata[index][1]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= expensesreportdata[index][0] ;//date
+                tdata.amount= expensesreportdata[index][1];//amount
+                tableData.push(tdata);
+
+                totalamount = (parseFloat(totalamount) + parseFloat(expensesreportdata[index][1])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Weekly"){
+                chartLabeles.push(expensesreportdata[index][0]+ " - " + expensesreportdata[index][1]+ " - " + expensesreportdata[index][2]);//date
+                chartData.push(expensesreportdata[index][3]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= expensesreportdata[index][0] + " - " + expensesreportdata[index][1] + " - " + expensesreportdata[index][2] ;//date
+                tdata.amount= expensesreportdata[index][3];//amount
+                tableData.push(tdata);
+
+                totalamount = (parseFloat(totalamount) + parseFloat(expensesreportdata[index][3])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Daily"){
+                chartLabeles.push(expensesreportdata[index][0]);//date
+                chartData.push(expensesreportdata[index][1]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= expensesreportdata[index][0];//date
+                tdata.amount= expensesreportdata[index][1];//amount
+                tableData.push(tdata);
+
+                totalamount = (parseFloat(totalamount) + parseFloat(expensesreportdata[index][1])).toFixed(2);
+            }
+
+        }
+
+        fillTable('tblMonthlyExpenses',tableData,fillForm,btnDeleteMC,viewitem);
+
+        var tfooter = document.createElement("tfoot");
+        var tfooterrow = document.createElement("tr");
+        var tfooterrowtd = document.createElement("td");
+        tfooterrowtd.colSpan= 3;
+        tfooterrowtd.innerHTML = "Total Expense: Rs." + totalamount;
+        tfooterrow.appendChild(tfooterrowtd);
+        tfooter.appendChild(tfooterrow);
+        tblMonthlyExpenses.appendChild(tfooter);
+
+        const ctx = document.getElementById('myChartExpenses').getContext('2d');
+        myChartExpenses = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: chartLabeles,
+                datasets: [{
+                    label: 'Income Amount',
+                    data: chartData,
+                    backgroundColor: getRandomColorHex(chartLabeles.length)
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        //income
+        var incomereportdata = httpRequest("/report/incomereport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+        var incomereportdata1 = httpRequest("/report/incomereport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+
+        var tableDatain = new Array();
+        var chartLabelesin =  new Array();
+        var chartDatain =  new Array();
+        var totalamountin =  0;
+
+        for (var index in incomereportdata){
+            if(cmbTypeId.value == "Monthly"){
+                chartLabelesin.push(incomereportdata[index][0] + " - " + incomereportdata[index][1]);//date
+                chartDatain.push(incomereportdata[index][2]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= incomereportdata[index][0] + " - " + incomereportdata[index][1];//date
+                tdata.amount= incomereportdata[index][2];//amount
+                tableDatain.push(tdata);
+
+                totalamountin = (parseFloat(totalamountin) + parseFloat(incomereportdata[index][2])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Annual"){
+                chartLabelesin.push(incomereportdata[index][0]);//date
+                chartDatain.push(incomereportdata[index][1]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= incomereportdata[index][0] ;//date
+                tdata.amount= incomereportdata[index][1];//amount
+                tableDatain.push(tdata);
+
+                totalamountin = (parseFloat(totalamountin) + parseFloat(incomereportdata[index][1])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Weekly"){
+                chartLabelesin.push(incomereportdata[index][0]+ " - " + incomereportdata[index][1]+ " - " + incomereportdata[index][2]);//date
+                chartDatain.push(incomereportdata[index][3]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= incomereportdata[index][0] + " - " + incomereportdata[index][1] + " - " + incomereportdata[index][2] ;//date
+                tdata.amount= incomereportdata[index][3];//amount
+                tableDatain.push(tdata);
+
+                totalamountin = (parseFloat(totalamountin) + parseFloat(incomereportdata[index][3])).toFixed(2);
+            }
+            if(cmbTypeId.value == "Daily"){
+                chartLabelesin.push(incomereportdata[index][0]);//date
+                chartDatain.push(incomereportdata[index][1]);//amount
+
+                var tdata = new Object();
+                tdata.yearmonth= incomereportdata[index][0];//date
+                tdata.amount= incomereportdata[index][1];//amount
+                tableDatain.push(tdata);
+
+                totalamountin = (parseFloat(totalamountin) + parseFloat(incomereportdata[index][1])).toFixed(2);
+            }
+
+        }
+
+        fillTable('tblMonthlyIncome',tableDatain,fillForm,btnDeleteMC,viewitem);
+
+        var tfooterin = document.createElement("tfoot");
+        var tfooterrowin = document.createElement("tr");
+        var tfooterrowtdin = document.createElement("td");
+        tfooterrowtdin.colSpan= 3;
+        tfooterrowtdin.innerHTML = "Total Income: Rs." + totalamountin;
+        tfooterrowin.appendChild(tfooterrowtdin);
+        tfooterin.appendChild(tfooterrowin);
+        tblMonthlyIncome.appendChild(tfooterin);
+
+        const ctxin = document.getElementById('myChartIncome').getContext('2d');
+        myChartIncome = new Chart(ctxin, {
+            type: 'line',
+            data: {
+                labels: chartLabelesin,
+                datasets: [{
+                    label: 'Income Amount',
+                    data: chartDatain,
+                    backgroundColor: getRandomColorHex(chartLabelesin.length)
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        //profit
+        // var expensesreportdata1 = httpRequest("/report/expensesreport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+        // var incomereportdata = httpRequest("/report/incomereport?sdate="+dteStartDate.value +"&enddate="+dteEndDate.value+"&type="+cmbTypeId.value,"GET");
+        var tableDataprofit = new Array();
+        var chartLabelesprofit  =  new Array();
+        var chartDataprofit =  new Array();
+        var totalamountprofit =  0;
+
+        if(cmbTypeId.value == "Monthly") {
+            for (var index in incomereportdata) {
+                var exitdate = false;
+                var ind = 0;
+                for (ind in expensesreportdata1) {
+                    if (expensesreportdata1[ind][1] == incomereportdata[index][1]) {
+                        exitdate = true;
+                        break;
+                    }
+                }
+                //both expense and income exit
+                if (exitdate == true) {
+                    expensesreportdata1[ind][3] = incomereportdata[index][2];
+
+                } else {
+                    incomereportdata[index][3] = incomereportdata[index][2];
+                    incomereportdata[index][2] = "0.00";
+                    expensesreportdata1.push(incomereportdata[index]);
+                }
+            }
+            //console.log(expensesreportdata1);
+
+            for (var index in expensesreportdata1) {
+                expensesreportdata1[index][4] = parseFloat(expensesreportdata1[index][3]) - parseFloat(expensesreportdata1[index][2]);
+
+                chartLabelesprofit.push(expensesreportdata1[index][0] + " - " + expensesreportdata1[index][1]);//date
+                chartDataprofit.push(parseFloat(expensesreportdata1[index][4]));//amount
+
+                var tdata = new Object();
+                tdata.yearmonth = expensesreportdata1[index][0] + " - " + expensesreportdata1[index][1];//date
+                tdata.incomeamount = expensesreportdata1[index][2];//amount
+                tdata.expensesamount = expensesreportdata1[index][3];//amount
+                tdata.profitamount = expensesreportdata1[index][4];//amount
+                tableDataprofit.push(tdata);
+
+                totalamountprofit = (parseFloat(totalamountprofit) + parseFloat(expensesreportdata1[index][4])).toFixed(2);
+            }
+
+        }
+        if(cmbTypeId.value == "Annual") {
+            for (var index in incomereportdata) {
+                var exitdate = false;
+                var ind = 0;
+                for (ind in expensesreportdata1) {
+                    if (expensesreportdata1[ind][0] == incomereportdata[index][0]) {
+                        exitdate = true;
+                        break;
+                    }
+                }
+                //both expense and income exit
+                if (exitdate == true) {
+                    expensesreportdata1[ind][2] = incomereportdata[index][1];
+
+                } else {
+                    incomereportdata[index][2] = incomereportdata[index][1];
+                    incomereportdata[index][1] = "0.00";
+                    expensesreportdata1.push(incomereportdata[index]);
+                }
+            }
+            //console.log(expensesreportdata1);
+
+            for (var index in expensesreportdata1) {
+                expensesreportdata1[index][3] = parseFloat(expensesreportdata1[index][2]) - parseFloat(expensesreportdata1[index][1]);
+
+                chartLabelesprofit.push(expensesreportdata1[index][0]);//date
+                chartDataprofit.push(parseFloat(expensesreportdata1[index][3]));//amount
+
+                var tdata = new Object();
+                tdata.yearmonth = expensesreportdata1[index][0];//date
+                tdata.incomeamount = expensesreportdata1[index][2];//amount
+                tdata.expensesamount = expensesreportdata1[index][1];//amount
+                tdata.profitamount = expensesreportdata1[index][3];//amount
+                tableDataprofit.push(tdata);
+
+                totalamountprofit = (parseFloat(totalamountprofit) + parseFloat(expensesreportdata1[index][3])).toFixed(2);
+            }
+
+        }
+        if(cmbTypeId.value == "Weekly") {
+            for (var index in incomereportdata) {
+                var exitdate = false;
+                var ind = 0;
+                for (ind in expensesreportdata1) {
+                    if (expensesreportdata1[ind][2] == incomereportdata[index][2]) {
+                        exitdate = true;
+                        break;
+                    }
+                }
+                //both expense and income exit
+                if (exitdate == true) {
+                    expensesreportdata1[ind][4] = incomereportdata[index][3];
+
+                } else {
+                    incomereportdata[index][4] = incomereportdata[index][3];
+                    incomereportdata[index][3] = "0.00";
+                    expensesreportdata1.push(incomereportdata[index]);
+                }
+            }
+            //console.log(expensesreportdata1);
+
+            for (var index in expensesreportdata1) {
+                expensesreportdata1[index][5] = parseFloat(expensesreportdata1[index][4]) - parseFloat(expensesreportdata1[index][3]);
+
+                chartLabelesprofit.push(expensesreportdata1[index][0] + " - " + expensesreportdata1[index][1] + " - " + expensesreportdata1[index][2]);//date
+                chartDataprofit.push(parseFloat(expensesreportdata1[index][5]));//amount
+
+                var tdata = new Object();
+                tdata.yearmonth = expensesreportdata1[index][0] + " - " + expensesreportdata1[index][1] + " - " + expensesreportdata1[index][2];//date
+                tdata.incomeamount = expensesreportdata1[index][3];//amount
+                tdata.expensesamount = expensesreportdata1[index][4];//amount
+                tdata.profitamount = expensesreportdata1[index][5];//amount
+                tableDataprofit.push(tdata);
+
+                totalamountprofit = (parseFloat(totalamountprofit) + parseFloat(expensesreportdata1[index][5    ])).toFixed(2);
+            }
+        }
+
+        if(cmbTypeId.value == "Daily") {
+            for (var index in incomereportdata) {
+                var exitdate = false;
+                var ind = 0;
+                for (ind in expensesreportdata1) {
+                    if (expensesreportdata1[ind][0] == incomereportdata[index][0]) {
+                        exitdate = true;
+                        break;
+                    }
+                }
+                //both expense and income exit
+                if (exitdate == true) {
+                    expensesreportdata1[ind][2] = incomereportdata[index][1];
+
+                } else {
+                    incomereportdata[index][2] = incomereportdata[index][1];
+                    incomereportdata[index][1] = "0.00";
+                    expensesreportdata1.push(incomereportdata[index]);
+                }
+            }
+            console.log(expensesreportdata1);
+
+            for (var index in expensesreportdata1) {
+                expensesreportdata1[index][3] = parseFloat(expensesreportdata1[index][2]) - parseFloat(expensesreportdata1[index][1]);
+
+                chartLabelesprofit.push(expensesreportdata1[index][0]);//date
+                chartDataprofit.push(parseFloat(expensesreportdata1[index][3]));//amount
+
+                var tdata = new Object();
+                tdata.yearmonth = expensesreportdata1[index][0];//date
+                tdata.incomeamount = expensesreportdata1[index][1];//amount
+                tdata.expensesamount = expensesreportdata1[index][2];//amount
+                tdata.profitamount = expensesreportdata1[index][3];//amount
+                tableDataprofit.push(tdata);
+
+                totalamountprofit = (parseFloat(totalamountprofit) + parseFloat(expensesreportdata1[index][3])).toFixed(2);
+            }
+        }
+
+        fillTable('tblMonthlyProfit',tableDataprofit,fillForm,btnDeleteMC,viewitem);
+
+        var tfooter2 = document.createElement("tfoot");
+        var tfooterrow2 = document.createElement("tr");
+        var tfooterrowtd2 = document.createElement("td");
+        var tfooterrowtd3 = document.createElement("td");
+        var tfooterrowtd4 = document.createElement("td");
+        var tfooterrowtd5 = document.createElement("td");
+        tfooterrowtd2.colSpan= 2;
+        tfooterrowtd2.innerHTML = "Total: Rs." ;
+        tfooterrowtd3.innerHTML =  totalamount;
+        tfooterrowtd4.innerHTML =  totalamountin;
+        tfooterrowtd5.innerHTML = totalamountprofit;
+        tfooterrow2.appendChild(tfooterrowtd2);
+        tfooterrow2.appendChild(tfooterrowtd3);
+        tfooterrow2.appendChild(tfooterrowtd4);
+        tfooterrow2.appendChild(tfooterrowtd5);
+        tfooter2.appendChild(tfooterrow2);
+        tblMonthlyProfit.appendChild(tfooter2);
+
+        const ctxpro = document.getElementById('myChartProfit').getContext('2d');
+        myChartProfit = new Chart(ctxpro, {
+            type: 'line',
+            data: {
+                labels: chartLabelesprofit,
+                datasets: [{
+                    label: 'Income Amount',
+                    data: chartDataprofit,
+                    backgroundColor: getRandomColorHex(chartLabelesprofit.length)
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+    function fillForm () {}
+    function btnDeleteMC () {}
+    function viewitem () {}
+
+    function btnClearReportMC() {
+        loadReport();
+    }
+    function printExpensesChart() {
+        var newwindow = window.open();
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '> <h1 style='text-align: center'>"+ type+" Expenses Chart : </h1></div>" +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div><img src='"+ myChartExpenses.toBase64Image()+"'></div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+    }
+
+    function printExpensesTbl(){
+
+        var newwindow = window.open();
+        formattab = tblMonthlyExpenses.outerHTML;
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '><h1 style='text-align: center'>"+ type+" Expenses Table</h1></div>" +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div>"+ formattab+"</div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+        }
+
+    function printIncomeChart() {
+        var newwindow = window.open();
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '> <h1 style='text-align: center'>"+ type+" Income Chart : </h1></div> " +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div><img src='"+ myChartIncome.toBase64Image()+"'></div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+    }
+
+    function printIncomeTbl(){
+
+        var newwindow = window.open();
+        formattab = tblMonthlyIncome.outerHTML;
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '><h1 style='text-align: center'>"+ type+" Profit Table</h1></div>" +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div>"+ formattab+"</div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+    }
+
+    function printProfitChart() {
+        var newwindow = window.open();
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '> <h1 style='text-align: center'>"+ type+" <Profit></Profit> Chart : </h1></div> " +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div><img src='"+ myChartProfit.toBase64Image()+"'></div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+    }
+
+    function printProfitTbl(){
+
+        var newwindow = window.open();
+        formattab = tblMonthlyProfit.outerHTML;
+        var type = cmbTypeId.value;
+        var stdate = dteStartDate.value;
+        var enddate = dteEndDate.value;
+
+        newwindow.document.write("" +
+            "<html>" +
+            "<head><style type='text/css'>.google-visualization-table-th {text-align: left;} .modifybutton{display: none} .isort{display: none}</style>" +
+            "<link rel='stylesheet' href='../resources/bootstrap/css/bootstrap.min.css'/></head>" +
+            "<body><div style='margin-top: 150px; '><h1 style='text-align: center'>"+ type+" Income Table</h1></div>" +
+            "<div><p>Start Date: "+stdate+"     End Date: "+enddate+"</p></div>" +
+            "<div>"+ formattab+"</div>"+
+            "</body>" +
+            "</html>");
+        setTimeout(function () {newwindow.print(); },1200) ;
+    }
+</script>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

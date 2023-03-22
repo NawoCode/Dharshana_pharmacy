@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dharshana Pharmacy & Grocery : Customer Invoice Management </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/font-awesome.min.css">
+
+
+    <style>
+
+        .modalsize{
+            max-width: 1200px;
+        }
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #f00;
+        }
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="invoice.js"></script>
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+    <link href="resources/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="resources/select2/js/select2.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #411464">
+        <div id="dismiss" style="background-color: #411464">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #411464">
+            <h3>Dharshana Pharmacy & Grocery</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Product
+                </a>
+                <ul class="collapse list-unstyled" id="productSubmenu">
+                    <li class="ITEM">
+                        <a href="http://localhost:8080/item">Item</a>
+                    </li>
+                    <li class="BRAND">
+                        <a href="http://localhost:8080/subitem">Sub Item</a>
+                    </li>
+                    <li class="BATCH">
+                        <a href="http://localhost:8080/batch">Batch</a>
+                    </li>
+                    <li class="DRUGINVENTRY">
+                        <a href="http://localhost:8080/inventorydrug">Drug Item Inventory</a>
+                    </li>
+                    <li class="GROCERYINVENTRY">
+                        <a href="http://localhost:8080/inventorygrocery">Groceery Item Inventory</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#purchaseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Purchase
+                </a>
+                <ul class="collapse list-unstyled" id="purchaseSubmenu">
+                    <li class="SUPPLIER">
+                        <a href="http://localhost:8080/supplier"> Supplier </a>
+                    </li>
+                    <li class="QUOTATIONREQST">
+                        <a href="http://localhost:8080/quotationrequest"> Quotation Request </a>
+                    </li>
+                    <li class="QUOTATION">
+                        <a href="http://localhost:8080/quotation"> Quotation </a>
+                    </li>
+                    <li class="PURCHASEORDER">
+                        <a href="http://localhost:8080/porder"> Purchase Order </a>
+                    </li>
+                    <li class="GRN">
+                        <a href="http://localhost:8080/grn"> GRN </a>
+                    </li>
+                    <li class="SUPRETURN">
+                        <a href="http://localhost:8080/supplierreturn"> Supplier Return </a>
+                    </li>
+                    <li class="SUPPLIERPAYMENT">
+                        <a href="http://localhost:8080/spayment"> Supplier Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Dropdown -->
+            <li>
+                <a href="#salesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Sale
+                </a>
+                <ul class="collapse list-unstyled" id="salesSubmenu">
+                    <li class="CUSTOMER">
+                        <a href="http://localhost:8080/customer"> Customer </a>
+                    </li>
+                    <li class="CORDER">
+                        <a href="http://localhost:8080/corder"> Customer Order </a>
+                    </li>
+                    <li class="INVOICE">
+                        <a href="http://localhost:8080/invoice"> Invoice </a>
+                    </li>
+                    <li class="CPAYMENT">
+                        <a href="http://localhost:8080/cpayment"> Customer Payment </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Dropdown -->
+            <li>
+                <a href="#deliverySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Delivery
+                </a>
+                <ul class="collapse list-unstyled" id="deliverySubmenu">
+                    <li class="VEHICLE">
+                        <a href="http://localhost:8080/vehicle"> Vehicle </a>
+                    </li>
+                    <li class="DISTRIBUTION">
+                        <a href="http://localhost:8080/distribution"> Distribution </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Report
+                </a>
+                <ul class="collapse list-unstyled" id="reportSubmenu">
+                    <li>
+                        <a href="http://localhost:8080/inventorysearch"> Inventory Search </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/financialreport"> Financial </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/supplierarresreport"> Supplier Arreas </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <!-- Top Nav bar  -->
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: #411464">
+
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info btn-lg">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg ml-3 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow"> <i class="fa fa-home"></i></a>
+                        <span></span>
+                    </button>
+
+                    <button type="button" class="btn btn-info btn-lg rounded-circle ml-3 p-0" data-toggle="dropdown" >
+                        <a class="nav-link justify-content-center" data-toggle="dropdown" href="#"><i class="fa fa-th"></i>  </a>
+                        <div class="dropdown-menu" style="margin-left: 10px">
+
+                            <ul class="navbar-nav" style="margin: -10px -10px -10px -10px; background-color: #411464;">
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center CUSTOMER"
+                                         onclick="window.location.assign('http://localhost:8080/customer')">
+                                        <div id="custoercart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Customer</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center CORDER"
+                                         onclick="window.location.assign('http://localhost:8080/corder')">
+                                        <div id="cordercart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Order</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center CPAYMENT"
+                                         onclick="window.location.assign('http://localhost:8080/cpayment')">
+                                        <div id="cpaymentcart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item navitem">
+                                    <div class="m-2 text-center DISTRIBUTION"
+                                         onclick="window.location.assign('http://localhost:8080/distribution')">
+                                        <div id="distributioncart" style="width:50px; height:40px"></div>
+                                        <div class="">
+                                            <p class="font-weight-bold text-dark">Distribution</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <div class="">
+                    <h2 class="text-white font-weight-bold"> Dharshana Pharmacy & Grocery </h2>
+                </div>
+                <div class="float-right" style="margin-top: 10px">
+                    <p class="font-weight-bold text-white"> Loged as :  <span id="spnDesignation"> </span> </p>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 mr-2 float-right">
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="width: 160px" href="#"
+                                   id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img id="profileImage" class="profileImage">
+                                    <p class="loggedUserNameField d-inline" id="lblLogUser">123456</p>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="far fa-sliders-v"></i> View Profile</a>
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                       data-target="#settingsModal"><i class="far fa-sliders-v"></i> Change Password</a>
+                                    <a class="dropdown-item" href="#" onclick="btnSignoutMC()"><i
+                                            class="fas fa-sign-out-alt"></i> Sign Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </nav>
+        <!-- Content -->
+        <div class="container-fluid dashbordbody p-0">
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card cardstyle">
+                        <div class="card-header text-center cardhead">
+                            <h3>Customer Invoice Management</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul class="nav nav-pills mb-2">
+                                <li class="nav-item" id="listTable" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255); height: 50px; width: 146px"><span style="margin-inline-end: 10px"><i class="fas fa-street-view"></i></span>Veiw Invoice</a>
+                                </li>
+                                <li class="nav-item" id="listForm" onclick="changeTab('form')">
+                                    <a class="nav-link" id="tbForm" href="#" style="background-color: rgb(23, 23, 24); color: rgb(255, 255, 255);height: 50px; width: 142px"><span style="margin-inline-end: 10px"><i class="fas fa-plus-circle"></i></span>Add Invoice</a>
+                                </li>
+                            </ul>
+
+                            <div class="row p-3 form" id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="itemform" onsubmit="return false">
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 container-fluid text-right">
+                                                <span style="color: red;"><b>*</b>required</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <!-- InvoiceNo/customer-id/Corder Code -->
+                                                <div class="row">
+                                                    <!-- InvoiceNo -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtInvoiceNo"><b>Invoice No: <span style="color: red;">*</span></b></label>
+                                                            <input type="text" id="txtInvoiceNo" class="form-control" placeholder="Entre Invoice No"
+                                                                   required data-toggle="tooltip" data-placement="bottom" title="Invoice No can auto generate..."
+                                                                   onkeyup="textFieldBinder(txtInvoiceNo,'^[C][I][0-9]{8}$','invoice','invoiceno','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                    <!-- customer-id  -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" id="seelectCustomerId">
+                                                            <label for="cmbCustomerId"><b>Customer Id: <span style="color: red;">(Optional)</span></b></label>
+                                                            <select type="text" id="cmbCustomerId" class="js-example-basic-single form-control" placeholder="Entre Customer Id"
+                                                                   data-toggle="tooltip" data-placement="bottom" title="Select customer name from this dropdown..."
+                                                                    onchange="cmbCustomerIdCH(); comboBox2NewBinder(cmbCustomerId,'','invoice','customer_id','oldinvoice','seelectCustomerId .select2-container')"></select>
+                                                        </div>
+                                                    </div>
+                                                    <!--new button-->
+                                                   <!-- <div class="col-md-1">
+                                                        <button class="btn-success" data-toggle="modal" data-target="#addNewCustomerModal" style="margin-top: 37px; border-radius: 5px; margin-left: -15px">New</button>
+                                                    </div>-->
+                                                    <!-- Corder Code  -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="cmbCorderId"><b>Corder Code: <span style="color: red;">(Optional)</span></b></label>
+                                                            <select type="text" id="cmbCorderId" class="form-control" placeholder="Entre Corder Code"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Select Corder Code from this dropdown..."
+                                                                    onchange="comboBoxBinder(cmbCorderId,'','invoice','corder_id','oldinvoice')"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- cname/cmobile/cnic -->
+                                                <div class="row">
+                                                    <!-- cname -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtCName"><b>Name: <span style="color: red;">(Optional)</span></b></label>
+                                                            <input type="text" id="txtCName" class="form-control" placeholder="Enter customer name..."
+                                                                   data-toggle="tooltip" data-placement="bottom" title="Enter customer name start with Capital letter and nore than 3 letters should be incuded..."
+                                                                   onkeyup="textFieldBinder(txtCName,'^([A-Z][a-z]+)$','invoice','cname','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                    <!-- cmobile -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtCMobile"><b>Mobile No: <span style="color: red;">(Optional)</span></b></label>
+                                                            <input type="text" id="txtCMobile" class="form-control" placeholder="Entre Mobile No"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Enter valid mobile number..."
+                                                                    onkeyup="textFieldBinder(txtCMobile,'^0\\d{9}$','invoice','cmobile','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                    <!-- cnic  -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtCNic"><b>NIC : <span style="color: red;">(Optional)</span></b></label>
+                                                            <input type="text" id="txtCNic" class="form-control" placeholder="Entre NIC"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="9 digite plus vVxX or 12 digits..."
+                                                                    onkeyup="textFieldBinder(txtCNic,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','invoice','cnic','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- GrandAmount/Discount/NetAmount -->
+                                                <div class="row mt-3">
+                                                    <!-- GrandAmount -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtGrandAmount"><b>Grand Amount (Rs.): <span style="color: red;">*</span></b> </label>
+                                                                <input type="text" id="txtGrandAmount" required class="form-control" placeholder="0.00"
+                                                                       data-toggle="tooltip" data-placement="bottom" title="Grand total will automatically calculate and display when you add items into table..."
+                                                                       onkeyup="textFieldBinder(txtGrandAmount,'^[0-9]{1,6}[.][0-9]{2}$','invoice','grandtotal','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Discount -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtDiscount"><b>Discount Ratio: <span style="color: red;">(Optional)</span></b> </label>
+                                                            <input type="text" id="txtDiscount" class="form-control" placeholder="0.00"
+                                                                   data-toggle="tooltip" data-placement="bottom" title="Add discount with 2 decimal points(Ex:2.00)... Discount cannot be 0 and exceed 100"
+                                                                   onkeyup="textFieldBinder(txtDiscount,'^[0-9]{1,2}[.][0-9]{2}$','invoice','discountratio','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                    <!-- NetAmount -->
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="txtNetAmount"><b>Net Amount (Rs.): <span style="color: red;">*</span></b> </label>
+                                                            <input type="text" id="txtNetAmount" required class="form-control" placeholder="0.00"
+                                                                   data-toggle="tooltip" data-placement="bottom" title="Net Amount will automatically display..."
+                                                                   onkeyup="textFieldBinder(txtNetAmount,'^[0-9]{1,6}[.][0-9]{2}$','invoice','netamount','oldinvoice')">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Descrition -->
+                                                <div class="row mt-3">
+                                                    <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="txtDescription"><b>Invoice Descripton:
+                                                            <span style="color: red;">(Optional)</span></b></label>
+                                                        <textarea type="text" id="txtDescription" class="form-control"
+                                                                  placeholder="Add Description here..." rows="2" data-toggle="tooltip" data-placement="bottom"
+                                                                  title="Enter any note regarding porder status..."
+                                                                  onkeyup="textFieldBinder(txtDescription,'^.*$','invoice','description','oldinvoice')"></textarea>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <!-- Inner form -->
+                                            <div class="col-md-6">
+                                                <div class="card innercard" id="innerDrug">
+                                                    <div class="card-body">
+                                                        <div id="accordion">
+                                                            <!-- Drug form -->
+                                                            <div class="card" id="formDrug">
+                                                                <div class="card-header innerlebel" id="headingOne">
+                                                                    <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne"
+                                                                                aria-expanded="true" aria-controls="collapseOne">Add Items</h5>
+                                                                </div>
+
+                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                                     data-parent="#accordion">
+                                                                    <div class="card-body innerform">
+                                                                        <!-- Inner Drug Form Area -->
+                                                                        <div class="row mt-2">
+                                                                            <div class="col md-12">
+                                                                                <!-- Item type
+                                                                                <div class="row mt-3">
+                                                                                    <label for="chItemType" class="col-sm-4 col-form-label"><b>Item Type :</b></label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="checkbox" id="chItemType" required checked data-toggle="toggle" data-on="Drug" data-off="Grocery"
+                                                                                               data-onstyle="success" data-offstyle="success" data-width="150"
+                                                                                               data-height="40"
+                                                                                               onchange="chItemTypeCH()">
+                                                                                    </div>
+                                                                                </div>-->
+                                                                                <!-- Item -->
+                                                                                <div class="row mt-3">
+                                                                                    <label for="cmbBatchno" class="col-sm-4 col-form-label"><b>Item/Batch No :<span style="color: red;">*</span></b></label>
+                                                                                    <div class="col-sm-8" id="selectItem">
+                                                                                        <select id="cmbBatchno" class="js-example-basic-single form-control"
+                                                                                                onchange="cmbBatchnoCH(); comboBox2NewBinder(cmbBatchno,'','invoiceHasItem','batch_id','oldinvoiceHasItem','selectItem .select2-container')">
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Sales Price -->
+                                                                                <div class="row mt-3">
+                                                                                    <label for="txtSalesPrice" class="col-sm-4 col-form-label"><b>Sales Price(Rs.) :<span style="color: red;">*</span></b></label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" readonly class="form-control-plaintext" id="txtSalesPrice"
+                                                                                               placeholder="0.00"
+                                                                                               onkeyup="textFieldBinder(txtSalesPrice,'[0-9]{1,6}[.][0-9]{2}$','invoiceHasItem','salesprice','oldinvoiceHasItem')">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Quantity -->
+                                                                                <div class="row mt-3">
+                                                                                    <label for="txtQuantity" class="col-sm-4 col-form-label"><b>Quantity :<span style="color: red;">*</span></b></label>
+                                                                                    <div class="col-sm-3">
+                                                                                        <input type="text" class="form-control" id="txtQuantity" placeholder="0"
+                                                                                               data-toggle="tooltip" data-placement="bottom" title="Enter quantity number and it must be more than 0..."
+                                                                                               onkeyup="textFieldBinder(txtQuantity,'^[0-9]{1,3}$','invoiceHasItem','qty','oldinvoiceHasItem')">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Line Total -->
+                                                                                <div class="row mt-3`">
+                                                                                    <label for="txtLineTotal" class="col-sm-4 col-form-label"><b>Line Total(Rs.)
+                                                                                        :<span style="color: red;">*</span></b></label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text" readonly class="form-control-plaintext" id="txtLineTotal" value="0.00"
+                                                                                               data-toggle="tooltip" data-placement="bottom" title="Line total will automatically calculate and desplay when you enter quantity..."
+                                                                                               onkeyup="textFieldBinder(txtLineTotal,'[0-9]{1,6}[.][0-9]{2}$','invoiceHasItem','linetotal','oldinvoiceHasItem')">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Inner button -->
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+                                                                                        <div class="text-right mt-2">
+                                                                                            <button class="btn btn-info " type="button" id="btnInnerClear" style="width: 25%" onclick="btnInnerClearMc()">
+                                                                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                                                                            </button>
+                                                                                            <button class="btn btn-warning " type="button" id="btnInnerUpdate" style="width: 25%" onclick="btnInnerUpdateMc()">
+                                                                                                <i class="fas fa-recycle mr-2"></i> Update
+                                                                                            </button>
+                                                                                            <button class="btn btn-success" style="width: 25%" type="button" id="btnInnerAdd" onclick="btnInnerAddMc()">
+                                                                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card" id="divInnerDrugTable">
+                                                            <div class="card-header innerlebel" id="headingTwo">
+                                                                <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo"
+                                                                            aria-expanded="false" aria-controls="collapseTwo">view Table</h5>
+                                                            </div>
+                                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                                <div class="card-body innertable">
+                                                                    <!-- Table Area -->
+                                                                    <div class="row mt-2" id="innerTableDrug">
+                                                                        <script>
+
+                                                                            function setitem(ob) {
+                                                                                var item = "";
+
+                                                                                item = ob.batch_id.batchno + " "+ ob.batch_id.item_id.itemname;
+
+                                                                                return item;
+                                                                            }
+
+                                                                            var metadatainner = [
+                                                                                //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                                                {name: 'Item Name', search: true, datatype: 'text', property:setitem },
+                                                                                {name: 'Sales Price(RS.)', search: true, datatype: 'amount', property: 'batch_id.salesprice'},
+                                                                                {name: 'Quantity', search: true, datatype: 'text', property: 'qty'},
+                                                                                {name: 'Line Total(RS.)', search: true, datatype: 'amount', property: 'linetotal'},
+                                                                            ];
+                                                                            tableForInnerForm("innerTableDrug","tblInnerDrug",metadatainner,true)
+                                                                        </script>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- added date/status/Addedby -->
+                                        <div class="row">
+                                            <!-- addeddate -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dteAddedDate"><b>Created Date: <span style="color: red;">*</span></b></label>
+                                                    <input type="date" id="dteAddedDate" required class="form-control"
+                                                           onkeyup="textFieldBinder(dteAddedDate,'','invoice','createddate','oldinvoice')">
+                                                </div>
+                                            </div>
+                                            <!-- Invoice Status -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbStatus"><b>Invoice Status: <span style="color: red;">*</span></b></label>
+                                                    <select type="text" id="cmbStatus" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbStatus,'','invoice','invoicestatus_id','oldinvoice')"></select>
+                                                </div>
+                                            </div>
+                                            <!-- Asign By -->
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cmbAssignBy"><b>Asign By: <span style="color: red;">*</span></b></label>
+                                                    <select id="cmbAssignBy" required class="form-control"
+                                                            onchange="comboBoxBinder(cmbAssignBy,'','invoice','employee_id','oldinvoice')">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- buttons -->
+                                        <div class="text-right">
+                                            <button class="btn btn-outline-info " type="button" id="btnClear" style="width: 25%">
+                                                <i class="fas fa-recycle mr-2"></i> Clear
+                                            </button>
+                                            <!--<button class="btn btn-outline-warning" type="submit" id="btnUpdate"
+                                                    style="width: 25%"> <i class="fas fa-edit mr-2"></i> Update</button>-->
+                                            <button class="btn btn-outline-success" style="width: 25%" type="submit" id="btnAdd">
+                                                <i class='fas fa-plus-circle mr-2'></i>Add
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <div class="container-fluid">
+
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Invoice No', search: true, datatype: 'text', property: 'invoiceno'},
+                                            {name: 'Grand Total(RS.)', search: false, datatype: 'amount', property: 'grandtotal'},
+                                            {name: 'Discount Ratio', search: false, datatype: 'amount', property: 'discountratio'},
+                                            {name: 'Net Total(RS.)', search: false, datatype: 'amount', property: 'netamount'},
+                                            {
+                                                name: 'Invoice Status',
+                                                search: true,
+                                                datatype: 'text',
+                                                property: 'invoicestatus_id.name'
+                                            },
+                                        ];
+                                        //table Function(tableId,autoTableId,mainPropertyList,modifyButtons)
+                                        table("tableParent", "tblInvoice", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal add new customer -->
+<div class="modal fade bd-example-modal-lg" id="addNewCustomerModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg modalsize" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel1" style="font-size: 40px">Customer Management</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <!-- Form -->
+                <div class="row p-3 form"  id="divFromNew">
+                    <div class="col-md-12">
+                        <form class="" id="customerform" onsubmit="return false">
+                            <div class="row mt-2">
+                                <div class="col-md-12 container-fluid text-right">
+                                    <span style="color: red;"><b>*</b>required</span>
+                                </div>
+                            </div>
+                            <!-- Cus No/CallingName/NIC/Gender/DOB -->
+                            <div class="row">
+                                <!-- Customer Reg No -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="txtRegNo"><b>Customer Reg No: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtRegNo" class="form-control" placeholder="Entre Reg No"
+                                               data-toggle="tooltip" data-placement="bottom" title="1900000">
+                                    </div>
+                                </div>
+                                <!-- CallingName -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtCallingName"><b>Customer Calling Name: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtCallingName" class="form-control"
+                                               placeholder="Ex:Anna" required data-toggle="tooltip" data-placement="bottom"
+                                               title="Ex:Anna"
+                                               onkeyup="textFieldBinder(txtCallingName,'^([A-Z][a-z]+)$','customer','callingname','oldcustomer')">
+                                    </div>
+                                </div>
+                                <!-- NIC -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtNIC"><b>Customer NIC: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtNIC" class="form-control" placeholder="9 digite plus vVxX or 12 digits" required
+                                               data-toggle="tooltip" data-placement="bottom" title="9 digite plus vVxX or 12 digits"
+                                               onkeyup="nicTestFieldBinder(txtNIC,'^(([0-9]{9}[vVxX])|([0-9]{12}))$','customer','nic','oldcustomer')">
+                                    </div>
+                                </div>
+                                <!-- Gender -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="cmbGender"><b>Customer Gender: <span
+                                                style="color: red;">*</span></b></label>
+                                        <select type="text" id="cmbGender" class="form-control" disabled required
+                                                onchange="comboBoxBinder(cmbGender,'','customer','gender_id','oldcustomer')"></select>
+                                    </div>
+                                </div>
+                                <!-- DOB -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="dteDob"><b>Customer DOB: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="date" id="dteDob" class="form-control" disabled required
+                                               onkeyup="textFieldBinder(dteDob,'','customer','dob','oldcustomer')">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FullName/Address/Description -->
+                            <div class="row">
+                                <!-- FullName -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtFullName"><b>Customer Full Name: <span
+                                                style="color: red;">*</span></b></label>
+                                        <textarea type="text" id="txtFullName" class="form-control"
+                                                  placeholder="Add Full Name here" required rows="2" data-toggle="tooltip"
+                                                  data-placement="bottom" title="Full Name"
+                                                  onkeyup="textFieldBinder(txtFullName,'^([a-zA-Z]+|[a-zA-Z]+\\s{1}[a-zA-Z]{1,}|[a-zA-Z]+\\s{1}[a-zA-Z]{3,}\\s{1}[a-zA-Z]{1,})$','customer','fullname','oldcustomer')"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Address -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtCusAddress"><b>Customer Address: <span style="color: red;">*</span></b></label>
+                                        <textarea type="text" id="txtCusAddress" class="form-control"
+                                                  placeholder="Add Address here..." rows="2" data-toggle="tooltip"
+                                                  data-placement="bottom" title="Address" required
+                                                  onkeyup="textFieldBinder(txtCusAddress,'^([\\w\\/\\-,\\s]{2,})$','customer','address','oldcustomer')"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Description -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtCusDescription"><b>Customer Descripton:</b>
+                                            <span style="color: red;">(Optional)</span></label>
+                                        <textarea type="text" id="txtCusDescription" class="form-control"
+                                                  placeholder="Add Description here..." rows="2" data-toggle="tooltip"
+                                                  data-placement="bottom" title="Description"
+                                                  onkeyup="textFieldBinder(txtCusDescription,'^.*$','customer','description','oldcustomer')"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile No/Second contactNo/email/customer type -->
+                            <div class="row">
+                                <!-- Mobile No -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtMobile"><b>Customer Mobile No: <span
+                                                style="color: red;">*</span></b></label>
+                                        <div class="input-group">
+                                            <input type="text" id="txtMobile" class="form-control"
+                                                   placeholder="Ex:760000000" required data-toggle="tooltip" data-placement="bottom"
+                                                   title="Ex:760000000"
+                                                   onkeyup="textFieldBinder(txtMobile,'^0\\d{9}$','customer','mobileno','oldcustomer')">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Second contactNo -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtLAnd"><b>Customer Land No: </b><span style="color: red;">(Optional)</span></label>
+                                        <div class="input-group">
+                                            <input type="text" id="txtLAnd" class="form-control"
+                                                   placeholder="Ex:3000000" data-toggle="tooltip" data-placement="bottom"
+                                                   title="Ex:3000000"
+                                                   onkeyup="textFieldBinder(txtLAnd,'^0\\d{9}$','customer','secondcontactno','oldcustomer')">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- email -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtEmail"><b>Customer E-mail: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="text" id="txtEmail" class="form-control"
+                                               placeholder="Ex:customer@gmail.com" required data-toggle="tooltip"
+                                               data-placement="bottom" title="Ex:customer@gmail.com"
+                                               onkeyup="textFieldBinder(txtEmail,'^.*$','customer','email','oldcustomer')">
+                                    </div>
+                                </div>
+                                <!-- customer type -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="cmbCusType"><b>Customer Type: <span
+                                                style="color: red;">*</span></b></label>
+                                        <select type="text" id="cmbCusType" class="form-control" required
+                                                onchange="comboBoxBinder(cmbCusType,'','customer','customertype_id','oldcustomer')"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- added date/status/point -->
+                            <div class="row">
+                                <!-- added date -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="dteAsignDate"><b>Asign Date: <span
+                                                style="color: red;">*</span></b></label>
+                                        <input type="date" id="dteAsignDate" class="form-control"
+                                               onchange="comboBoxBinder(dteAsignDate,'','customer','addeddate','oldcustomer')">
+                                    </div>
+                                </div>
+                                <!-- status -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="cmbStatusC"><b>Customer Status: <span
+                                                style="color: red;">*</span></b></label>
+                                        <select type="text" id="cmbStatusC" class="form-control"
+                                                onchange="comboBoxBinder(cmbStatusC,'','customer','customerstatus_id','oldcustomer')"></select>
+                                    </div>
+                                </div>
+                                <!-- Asign By -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="cmbAssignByC"><b>Asign By: <span style="color: red;">*</span></b></label>
+                                        <select id="cmbAssignByC" required class="form-control"
+                                                onchange="comboBoxBinder(cmbAssignByC,'','customer','employee_id','oldcustomer')">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- buttons -->
+                            <div class="text-right">
+                                <button class="btn btn-danger" type="submit" id="btnClose" data-dismiss="modal"
+                                        style="width: 25%"> <i class="fas fa-edit mr-2"></i> Close</button>
+                                <button class="btn btn-info " type="button" id="btnClearMod" style="width: 25%">
+                                    <i class="fas fa-recycle mr-2"></i> Clear
+                                </button>
+                                <button class="btn btn-success" style="width: 25%" type="submit" id="btnAddMod">
+                                    <i class='fas fa-plus-circle mr-2'></i>Add
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Add</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!-- Modal veiw item -->
+<div class="modal fade bd-example-modal-lg" id="dataVeiwModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header head">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 40px">Invoice  Details</h5>
+            </div>
+            <div class="modal-body modelcontent">
+                <div class="row" id="printformtable">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <table  class="mt-1 table table-borderless ">
+                                <tbody>
+                                <tr>
+                                    <th>Invoice No</th>
+                                    <td>:</td>
+                                    <td id="tdInvoice" ></td>
+
+                                    <td rowspan="2" colspan="3" style="font-size: 40px; text-align: right; color: #6f42c1"> Dharshana Pharmacy & Grocery</td>
+
+                                </tr>
+                                <tr>
+                                    <th>Created Date</th>
+                                    <td>:</td>
+                                    <td id="tdaddate"></td>
+
+                                </tr>
+                                <tr>
+                                </tr>
+                                <!--<tr>
+                                    <th>Customer Name</th>
+                                    <td>:</td>
+                                    <td id="tdname"></td>
+                                </tr>-->
+                                <tr>
+                                    <th>CorderCode</th>
+                                    <td>:</td>
+                                    <td id="tdCcode"></td>
+
+                                    <th>Mobile No</th>
+                                    <td>:</td>
+                                    <td id="tdcmobile"></td>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>:</td>
+                                    <td id="tdcname" ></td>
+
+                                <th>NIC</th>
+                                    <td>:</td>
+                                    <td id="tdcnic"></td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" id="lblDrug" style="background-color: rgba(162,101,185,0.9); height: 40px; padding-right: 10px">
+                            <h4>Items :</h4>
+                        </div>
+                        <div class="row">
+                            <table class="mt-3 table table-borderless">
+                                <tbody>
+                                <tr id="tblDrug">
+                                    <td colspan="9" id="prinIinnerDrugTable">
+                                        <script>
+                                            //print innerr table
+
+                                            function setitem(ob) {
+                                                var item = "";
+
+                                                item = ob.batch_id.batchno + " "+ ob.batch_id.item_id.itemname;
+
+                                                return item;
+                                            }
+
+                                            var metadatainner = [
+                                                //{coloumn-name / search(true/false) / datatype(text/photo/amount) / mappingproperty}
+                                                {name: 'Item Name', search: true, datatype: 'text', property:setitem },
+                                                {name: 'Sales Price(RS.)', search: true, datatype: 'amount', property: 'batch_id.salesprice'},
+                                                {name: 'Quantity', search: true, datatype: 'text', property: 'qty'},
+                                                {name: 'Line Total(RS.)', search: true, datatype: 'amount', property: 'linetotal'},
+                                            ];
+                                            tableForInnerForm("prinIinnerDrugTable", "tblPrintInnerDrugItem", metadatainner, false)
+
+                                        </script>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="7" style="text-align: right;">Grand Amount(Rs.)</th>
+                                    <td>:</td>
+                                    <td id="tddtGrandAmount" style="text-align: right; padding-right: 55px" ></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="7" style="text-align: right;">Discount</th>
+                                    <td>:</td>
+                                    <td id="tddDiscount" style="text-align: right; padding-right: 55px" ></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="7" style="text-align: right;">Net Amount(Rs.)</th>
+                                    <td>:</td>
+                                    <td id="tddNetAmount" style="text-align: right; padding-right: 55px" ></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                                    <table class="mt-2 table table-borderless">
+                                        <tbody>
+                                        <tr>
+                                            <th>Assign By</th>
+                                            <td>:</td>
+                                            <td id="tdasign"></td>
+
+                                            <th>Invoice Status</th>
+                                            <td>:</td>
+                                            <td id="tdpstatus"></td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td>Dharshana Pharmacy & Grocery</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dhpharmacy@gmmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>011-1258796</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: center">Thank You for Coming....</th>
+
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: rgba(199, 187, 215, 0.9)">
+                <button type="button" class="btn closebte" data-dismiss="modal">Close</button>
+                <button type="button" class="btn printBtn" onclick="btnPrintRowMC()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
